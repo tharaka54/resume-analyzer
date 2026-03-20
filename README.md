@@ -1,10 +1,10 @@
-# 🎯 ResumeAI — AI-Powered Resume Analyzer & Ranking System
+# HireIQ — AI-Powered Resume Analyzer & Ranking System
 
 > An intelligent recruiter tool that scores, ranks, and explains candidate resumes using a hybrid TF-IDF + BERT model with Claude AI explanations.
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 1. [Overview](#overview)
 2. [Architecture](#architecture)
