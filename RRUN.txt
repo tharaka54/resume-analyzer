@@ -1,0 +1,9 @@
+cd "D:\CSG3101 - Applied Project\CV_AI\resume-analyzer"
+.\venv\Scripts\activate
+python run.py
+
+
+
+cd "D:\CSG3101 - Applied Project\CV_AI\resume-analyzer\frontend"
+npm install
+npm run dev

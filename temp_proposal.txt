@@ -1,0 +1,984 @@
+AI-POWERED RECRUITMENT PLATFORM 
+HireIQ 
+Intelligent CV Screening & Skill Assessment System  
+ 
+ 
+ 
+Project Proposal  
+Applied Project | CSG3101 
+
+ 
+ 
+Project 
+Proposal 
+ 
+ 
+1 | P a g e  
+ 
+Table of Contents 
+1.Project Overview ................................................................................................................................... 2 
+2.Background ........................................................................................................................................... 2 
+3.Project Scope ......................................................................................................................................... 3 
+3.1 Proposed Work ................................................................................................................................ 3 
+3.2 In-Scope Features ............................................................................................................................ 3 
+3.3 Out-of-Scope Features ..................................................................................................................... 4 
+3.4 Deliverables .................................................................................................................................... 4 
+4.Schedule (Work Breakdown Structure (WBS) .......................................................................................... 5 
+5.Team Capability Alignment .................................................................................................................... 6 
+6.Tools and Technical Requirements .......................................................................................................... 7 
+7.Possible Future Improvements ................................................................................................................ 8 
+Reference List .......................................................................................................................................... 9 
+Appendix ............................................................................................................................................... 10 
+Appendix A ........................................................................................................................................ 10 
+1. Functional Requirements.................................................................................................................. 10 
+1.1 User Functional Requirements .................................................................................................... 10 
+1.2 System Functional Requirements ................................................................................................ 11 
+2.Non-Functional Requirements ........................................................................................................... 11 
+Appendix B ........................................................................................................................................ 12 
+Gantt Chart Link: ................................................................................................................................ 12 
+Use Case Diagram............................................................................................................................... 13 
+Group Contract ................................................................................................................................... 13 
+ 
+ 
+ 
+List of Tables 
+Table 1 : Team Details ...................................................................................................................................................... 2 
+Table 2: Project Deliverables ............................................................................................................................................ 5 
+Table 3 : Team Capability Alignment .................................................................................................................................. 7 
+Table 4 : Tools and Technical Requirements........................................................................................................................ 8 
+Table 5: User Functional Requirements ............................................................................................................................ 10 
+Table 6:System Functional Requirements .......................................................................................................................... 11 
+Table 7: Non-Functional Requirements ............................................................................................................................. 12 
+ 
+List of Figures 
+Figure 1 : Schedule ........................................................................................................................................................... 5 
+Figure 2 : Use Case Diagram .......................................................................................................................................... 13 
+ 
+
+ 
+ 
+Project 
+Proposal 
+ 
+ 
+2 | P a g e  
+ 
+1.Project Overview 
+Project Name: HireIQ — Intelligent CV Screening & Skill Assessment Platform 
+ 
+Project Goal: To develop a secure, AI-powered web platform that enables any user to publicly 
+browse job postings, post job vacancies, and automatically screen applicants through role-specific 
+AI-generated quizzes and a hybrid NLP-based CV ranking engine combining TF-IDF and BERT 
+semantic similarity, enabling job posters to identify the most qualified candidates efficiently and 
+objectively across any industry. 
+ 
+Project Supervisor: Ms. Ann Roshanie Appuhamy 
+ 
+# 
+Student Name 
+Student 
+No. 
+Program 
+Email 
+1 
+Kuruppu Mudalige Tharaka 
+Madusha Kuruppu 
+10675270 
+Bachelor of Computer 
+Science (Cyber Security) 
+kuruppuk@our.ecu.edu.au 
+2 
+Asvin Fernando 
+10675493 
+Bachelor of Computer 
+Science (Cyber Security) 
+ASVINF@our.ecu.edu.au 
+3 
+Yapa Appu Hamilage Don 
+Vishwa Shiwanka Jayasinghe 
+10675273 
+Bachelor of Computer 
+Science (Cyber Security) 
+YJAYASIN@our.ecu.edu.au 
+4 
+HETTIARACHCHIGE DON 
+Sehan Denuka Hettiarachchi 
+10637777 
+Bachelor of Computer 
+Science (Cyber Security) 
+SEHANH@our.ecu.edu.au 
+5 
+HEWA KIRINDAGE Vinuka 
+Janandith Rathnayake 
+10685113 
+Bachelor of Computer 
+Science (Cyber Security) 
+VHEWAKIR@our.ecu.edu.au 
+Table 1 : Team Details 
+2.Background 
+The current recruitment world is facing a dire situation of efficiency crisis. Studies by TheLadders 
+(2012) show that an average recruiter spends 6 seconds to look at a particular resume at an initial 
+stage; however, a significant percentage of those applications are sifted before a hiring manager. 
+This shallow, quick screening creates a paradox, where large numbers of unqualified applicants 
+flood the human resources departments, whilst really talented applicants are usually lost due to 
+inconsistent and subjective screening techniques by human resources. 
+This problem is significant. The Society of Human Resource Management (SHRM) estimates it to 
+be about 17,000 $ on average to make a poor hire, whereas the time it takes to complete a single 
+vacancy is 42 days on average (SHRM, 2022). The hiring process may be significantly extended 
+in technical sectors with high demand (software engineering, data science, and cybersecurity). 
+According to the ISC2 Cybersecurity Workforce Study (2023), it is estimated that around the 
+world, there exist 3.5 million cybersecurity specialists, so there is a strong need to implement faster 
+and more precise screening systems to match talent with roles. 
+
+ 
+ 
+Project 
+Proposal 
+ 
+ 
+3 | P a g e  
+ 
+The traditional Applicant Tracking Systems (ATS) used by over 98 % of the Fortune 500 
+companies (Jobscan, 2023) are based on inflexible keyword matching that does not measure 
+competence of a job applicant. A study conducted at Harvard Business School revealed that 88% 
+of employers also recognize that their ATS automatically excludes qualified applicants only due 
+to the lack of precise keyword patterns in their CVs, a process known as the hidden worker problem 
+(Fuller et al., 2021). This is therefore a systematic lockout of competent candidates by the 
+employers based on tooling limitation instead of actual skills gap. 
+In addition to the accuracy of screening there is the growing concern of assessment integrity. In a 
+2023 survey released by the talent assessment company HireVue, 52% of recruiters said that they 
+had encountered candidates who lied about their skills on their CVs, and 38 % of recruiters said 
+that an applicant had been coached in advance on standard interview questions (HireVue, 2023). 
+Without a goal, tamper-resistant skills checking measure early into the recruitment pipeline, 
+organizations run the risk of propelling the wrongly qualified or dishonest applicant to an 
+expensive and time-sensitive interview. 
+These are the challenges that HireIQ is dealing with. The platform replaces the subjective manual 
+screening process with a reproducible, data-driven pipeline, enforced server-side with anti-
+cheating measures, and with an anti-cheating hybrid NLP-based CV ranking engine (TF-IDF + 
+BERT semantic similarity) which can be applied to any job role and industry. The result is a more 
+expedited, unbiased and precise first round evaluation procedure that costs less, lowers recruiter 
+load, and reveals the most truly qualified applicants. 
+3.Project Scope 
+3.1 Proposed Work 
+HireIQ is a full-stack web site that integrates the totality of the recruitment pre-screening 
+experience, inclusive of public job browsing, authenticated job posting, AI-based quiz-based 
+assessment, secure, curricula vitae (CV) uploading of qualified applicants, a hybrid natural 
+language processing (NLP)-based CV ranking system, and a structured recruiter dashboard. The 
+system is designed to accommodate any job position and sector with AI generated content being 
+dynamically tailored to fit the description of the specific job. 
+3.2 In-Scope Features 
+1.  Public job listings homepage with search and filter by title, location, and job type, no login 
+required to browse view. 
+2. Authentication is performed using Google OAuth 2.0, cross-site request forgery (CSRF) state 
+token verification is used to prevent the loss of the session, and the user is allowed to register 
+without going through steps of manual registration. 
+3. Authenticated users can post job vacancies with title, company, description, location, job 
+type, and required skills. 
+4. AI quiz generation (Google Gemini 2.5 Flash) of 15 questions per job posting, each applicant 
+receives a randomized selection of 15 with shuffled answers. 
+
+ 
+ 
+Project 
+Proposal 
+ 
+ 
+4 | P a g e  
+ 
+5. The quiz has a time limit of five minutes on the server which is strictly observed; otherwise 
+the submissions beyond the time-limit are rejected and scored zero. 
+6. Tab-switch detection during quiz 3 switches trigger automatic submission. 
+7. Server-side quiz scoring correct answers are never transmitted to the frontend. 
+8. CV upload pipeline gated behind a passing quiz score (12/15 or above), with retry limits and 
+cooldown timers. 
+9. Each PDF CV upload is checked through a complete six-tier security validation pipeline, 
+which makes sure that all the data uploads meet the data integrity and privacy criteria.  
+10. TF-IDF keyword matches scoring (32% weight) and BERT semantic similarity scoring (48% 
+weight) per CV against the job description. (Combined hybrid ranking formula: Quiz 20% + 
+TF-IDF 32% + BERT 48%.) 
+11. TF-IDF keyword matches scoring (32% weight) and BERT semantic similarity scoring (48% 
+weight) per CV against the job description. (Combined hybrid ranking formula: Quiz 20% + 
+TF-IDF 32% + BERT 48%.) 
+12. Gemini 2.5 Flash generates a plain English explanatory narrative of every applicant, falling 
+back to rule-based content availability. 
+13. Real-time WebSocket ranking progress for live scoring updates as CVs are processed. 
+14. Resume viewer with dual-layer keyword and semantic sentence highlighting. 
+15. CSV export of full applicant rankings including quiz scores. 
+3.3 Out-of-Scope Features 
+1. The system will not integrate with physical hardware devices such as webcams, biometric 
+scanners or any external IoT/HR hardware. 
+2. The system will not comply with enterprise-level regulations such as full GDPR/CCPA 
+audits or ISO 27001 certification processes. 
+3. The system will not include monetization or commercial features such as job ad marketplaces 
+or advertising integrations. 
+4. The system will not implement deep behavioral fraud detection such as keystroke dynamics, 
+mouse movement analytics or webcam proctoring. 
+5. The system will not support multiple languages (English only in this version.) 
+6. The system will not connect to external corporate systems such as HRIS, LDAP/Active 
+Directory or payroll/ERP platforms. 
+3.4 Deliverables 
+# 
+Deliverable 
+Description 
+Due Date 
+01 Project 
+Proposal Draft 
+Initial project proposal drafts following assignment and supervisor 
+instructions, including scope, requirements, and team structure. 
+14 Mar 2026 
+02 
+Project 
+Proposal 
+Report 
+Final project proposal document with supervisor approval submitted as a 
+PDF following CSG3101 assignment instructions. 
+16 Mar 2026 
+03 
+System 
+Architecture 
+Diagram 
+Visual depiction of system components, data flows, AI pipeline, WebSocket 
+integration, and security layers as a digital PDF file. 
+31 Mar 2026 
+
+ 
+ 
+Project 
+Proposal 
+ 
+ 
+5 | P a g e  
+ 
+04 HireIQ Web 
+Platform 
+Fully functional web application covering public job listings, authenticated 
+job posting, AI quiz assessment, CV upload, hybrid ranking, and HR 
+dashboard built using Flask and HTML/CSS/JS. 
+04 May 2026 
+05 Source Code 
+Repository 
+Complete codebase with version history and inline comments for all system 
+components including frontend, backend, AI modules, and security pipeline 
+shared as a GitHub repository (Link). 
+04 May 2026 
+06 VAPT Report 
+Vulnerability assessment and penetration testing report covering 
+authentication, quiz integrity, file upload security, and API endpoints using 
+OWASP ZAP documented as a PDF. 
+04 May 2026 
+07 Security 
+Testing Report 
+Results of security audits, quiz anti-cheat testing, PDF security pipeline 
+testing, and rate limiting validation documented as a PDF. 
+04 May 2026 
+08 System Testing 
+Report 
+Summary of all unit, integration, and performance testing phases and results 
+including BERT inference speed and concurrent user testing documented as 
+a PDF. 
+11 May 2026 
+09 User Manual 
+Step-by-step guide for job posters and applicants covering all key 
+workflows including posting jobs, taking quizzes, uploading CVs, and 
+viewing rankings documented as a PDF. 
+11 May 2026 
+10 Developer 
+Manual 
+Comprehensive technical documentation covering system architecture, API 
+references, NLP model documentation, deployment guide, and maintenance 
+procedures documented as a PDF. 
+11 May 2026 
+11 Project 
+Presentation 
+Presentation and live demonstration showing HireIQ objectives, AI pipeline, 
+system features, quiz results, and ranking outputs. 
+04 May 2026 
+12 Final Project 
+Outputs Report 
+Formal report summarising the scope, design, AI pipeline implementation, 
+testing results, evaluation against all requirements, and future improvements 
+documented as a PDF. 
+11 May 2026 
+Table 2: Project Deliverables 
+4.Schedule (Work Breakdown Structure (WBS) 
+ 
+Figure 1 : Schedule 
+
+ 
+ 
+Project 
+Proposal 
+ 
+ 
+6 | P a g e  
+ 
+5.Team Capability Alignment 
+Student Name 
+Enrolled 
+Course 
+Role 
+Key Tasks 
+Tasks Aligned with Course 
+Learning Outcomes 
+Kuruppu Mudalige 
+Tharaka Madusha 
+Kuruppu 
+(10675270) 
+B.Sc. 
+Computer 
+Science 
+(Cyber 
+Security) 
+Project 
+Manager / 
+Backend & 
+DevOps 
+Engineer 
+• Plan and coordinate 
+project deliverables and 
+timeline. 
+• Manage GitHub repository 
+and project structure. 
+• Configure Flask 
+deployment environment.  
+• Lead sprint planning and 
+risk management 
+• Apply project management 
+techniques to coordinate tasks and 
+manage risks. 
+• Use backend and cybersecurity 
+skills to design secure Flask API 
+architecture. 
+Tasks Aligned with 
+Gantt Chart 
+1.1, 1.5, 1.8, 1.9, 1.10, 2.12, 2.13, 4.1, 4.3, 4.5, 4.14, 4.18, 5.4, 8.1, 8.2, 8.3 
+Asvin Fernando 
+(10675493) 
+B.Sc. 
+Computer 
+Science 
+(Cyber 
+Security) 
+AI / NLP 
+Engineer 
+• Design and implement TF-
+IDF and BERT hybrid 
+scoring pipelines. 
+• Integrate Gemini 2.5 Flash 
+for quiz generation and 
+LLM explanations. 
+• Build spaCy NER skill 
+gap analysis module. 
+• Apply AI and machine learning 
+techniques to build the hybrid NLP 
+scoring engine. 
+• Ensure AI outputs do not expose 
+sensitive candidate data. 
+Tasks Aligned with 
+Gantt Chart 
+2.9, 3.9, 4.11, 4.12, 4.26, 4.27, 4.28, 4.29, 4.30, 4.31, 4.32, 5.8, 7.3 
+Yapa Appu 
+Hamilage Don 
+Vishwa Shiwanka 
+Jayasinghe 
+(10675273) 
+B.Sc. 
+Computer 
+Science 
+(Cyber 
+Security) 
+Frontend 
+Developer 
+• Build all HTML/CSS/JS 
+pages including homepage, 
+quiz interface and HR 
+dashboard. 
+• Implement tab-switch 
+detection and countdown 
+timer. 
+• Create dual-layer CV 
+highlighting. 
+• Apply web development 
+principles to build responsive and 
+accessible interfaces. 
+• Ensure frontend pages do not 
+expose sensitive data or allow 
+client-side manipulation 
+Tasks Aligned with 
+Gantt Chart 
+3.5, 3.6, 4.7, 4.8, 4.13, 4.15, 4.33, 4.34, 4.35, 5.3, 6.1 
+HETTIARACHCH
+IGE DON Sehan 
+Denuka 
+Hettiarachchi 
+(10637777) 
+B.Sc. 
+Computer 
+Science 
+(Cyber 
+Security) 
+Full-Stack 
+& Security 
+Engineer 
+• Implement Google OAuth 
+2.0 and JWT token system.  
+• Design and build the 6-
+layer PDF security pipeline.  
+• Configure rate limiting 
+and conduct VAPT using 
+OWASP ZAP. 
+• Apply cybersecurity principles 
+from the Network Security and 
+Ethical Hacking units to implement 
+authentication and penetration 
+testing. 
+• Use cryptography knowledge to 
+implement JWT and HTTPS/TLS. 
+Tasks Aligned with 
+Gantt Chart 
+3.8, 4.2, 4.3, 4.4, 4.19, 4.20, 4.21, 4.22, 4.24, 4.36, 5.5, 6.3, 7.1, 7.2 
+
+ 
+ 
+Project 
+Proposal 
+ 
+ 
+7 | P a g e  
+ 
+HEWA 
+KIRINDAGE 
+Vinuka Janandith 
+Rathnayake 
+(10685113) 
+B.Sc. 
+Computer 
+Science 
+(Cyber 
+Security) 
+Documentat
+ion & 
+Testing 
+Specialist 
+• Write user guide, 
+developer manual and final 
+report. 
+• Execute unit and 
+integration test cases using 
+pytest. 
+• Evaluate system against all 
+FRs and NFRs. 
+• Apply software testing techniques 
+to design and execute 
+comprehensive test plans. 
+• Use technical writing skills to 
+produce clear documentation 
+aligned with industry standards. 
+Tasks Aligned with 
+Gantt Chart 
+2.7, 2.8, 2.14, 2.15, 4.27, 4.35, 5.1, 5.6, 5.7, 6.4, 7.5, 7.6, 8.3 
+Table 3 : Team Capability Alignment 
+6.Tools and Technical Requirements 
+ 
+Category 
+Tools / Technologies 
+Purpose / Justification 
+Access Method 
+System Design 
+& Prototyping 
+Draw.io, Lucid chart 
+Designing system architecture diagrams, 
+data flow diagrams, UI/UX wireframes and 
+component layouts for the HireIQ 
+platform. 
+Draw.io, Lucidchart 
+(free) 
+Frontend 
+Development 
+HTML, CSS, JavaScript 
+Building all public-facing pages including 
+job listings homepage, quiz interface, HR 
+dashboard and resume viewer. 
+VS Code (free) 
+Backend 
+Development 
+Python, Flask, flask-sock 
+Developing REST API endpoints, 
+WebSocket live ranking feed and all 
+server-side business logic. 
+VS Code, Python.org 
+(free) 
+Database 
+MongoDB, PyMongo 
+Storing users, job postings, quiz attempts, 
+CV data and AI scores in a flexible NoSQL 
+database. 
+MongoDB Atlas free tier 
+/ local install 
+Authentication 
+& Security 
+Google OAuth 2.0, JWT 
+(PyJWT), Flask-Limiter, 
+bleach 
+Implementing secure login, access token 
+management, rate limiting on API 
+endpoints and XSS input sanitisation. 
+Google Cloud Console 
+(free), PyPI (free) 
+AI & NLP 
+Python, scikit-learn, 
+HuggingFace BERT (all-
+MiniLM-L6-v2), spaCy, 
+NLTK 
+TF-IDF scoring, BERT semantic similarity, 
+skill gap analysis and text preprocessing. 
+Python (free) 
+PyPI (free), 
+HuggingFace (free) 
+AI & Data 
+Processing 
+Jupyter Notebook, NumPy 
+Researching, experimenting with and 
+evaluating NLP models for TF-IDF and 
+BERT scoring before integration. 
+Anaconda / VS Code 
+(free) 
+AI Quiz & 
+LLM 
+Google Gemini 2.5 Flash 
+API 
+Auto-generate quiz questions and produce 
+plain-English recruiter explanations 
+Google AI Studio (API 
+key required) 
+File Processing 
+& Security 
+PyMuPDF (fitz), python-
+magic 
+PDF text extraction, deep structural scan 
+and XSS input sanitisation 
+PyPI (free) 
+Security 
+Testing 
+OWASP ZAP, Postman, 
+pytest 
+VAPT, API endpoint testing and 
+unit/integration testing 
+OWASP ZAP (free), 
+Postman (free tier) 
+
+ 
+ 
+Project 
+Proposal 
+ 
+ 
+8 | P a g e  
+ 
+Web Server & 
+Security 
+Headers 
+Nginx, HTTPS / TLS 1.2+ 
+Serving the React frontend, reverse 
+proxying to Flask, enforcing HTTPS and 
+applying security headers (HSTS, CSP, X-
+Frame-Options). 
+Open source (free) 
+Version 
+Control 
+GitHub / Git 
+Source code management and team 
+collaboration 
+github.com (free) 
+Project 
+Management 
+Microsoft Teams, 
+Microsoft OneDrive 
+Team meetings, sprint planning and 
+document sharing 
+MS Teams and MS 
+OneDrive account 
+Documentation MS Word 
+Proposal, user guide, developer manual and 
+API reference 
+MS Office and pdf   
+Table 4 : Tools and Technical Requirements 
+7.Possible Future Improvements 
+ Development of a native mobile application for Android and iOS to allow candidates 
+to browse jobs, take quizzes and track application status on mobile devices, with push 
+notifications for job posters when new CVs are submitted. 
+ Expansion to support skills-based hiring through dynamic skill graphing, automated 
+upskilling resource suggestions for candidates with identified gaps, and AI-generated 
+personalized job recommendations based on a candidate's existing skill profile. 
+ Development of a predictive hire success scoring model trained on historical hiring 
+outcomes to forecast a candidate's long-term performance in a role beyond the initial 
+CV and quiz assessment. 
+ Addition of a practical skills assessment module supporting role-specific coding 
+challenges, scenario-based tasks and short-answer questions with AI evaluation, 
+allowing job posters to verify hands-on technical ability before progressing candidates 
+to final interviews.   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+
+ 
+ 
+Project 
+Proposal 
+ 
+ 
+9 | P a g e  
+ 
+Reference List 
+Fuller, J. B., Raman, M., Sage-Gavin, E., & Hines, K. (2021). Hidden workers: Untapped talent. Harvard 
+Business School Project on Managing the Future of Work and Accenture, 1. 
+https://www.hbs.edu/ris/Publication%20Files/hiddenworkers09032021_Fuller_white_paper_3
+3a2047f-41dd-47b1-9a8d-bd08cf3bfa94.pdf  
+Kore, G. LinkedIn and the Evolution of Talent Acquisition in the Digital Age. Recent Trends in 
+Commerce and Business Management, 55. https://www.researchgate.net/profile/Surya-
+Singh-
+12/publication/393725578_Recent_Trends_in_Commerce_and_Business_Management/links
+/687733bd3c12dc437a3f1569/Recent-Trends-in-Commerce-and-Business-
+Management.pdf#page=60  
+Nelson, K. (2018). Society for Human Resource Management (SHRM). The Real Costs of Recruitment. 
+Society for Human Resource Management. 
+https://www.wsc.edu/directory_record/17233/society_for_human_resource_management_sh
+rm  
+Phil, P. R. (2014). OWASP Top 10: The Top 10 Most Critical Web Application Security Threats Enhanced 
+with Text Analytics and Content by PageKicker Robot Phil 73. In CreateSpace Independent 
+Publishing Platform eBooks. https://dl.acm.org/doi/book/10.5555/2788303  
+Reimers, N., & Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks.                         
+Sentence Embeddings Using Siamese BERT-Networks, 3980–3990.   
+ 
+https://aclanthology.org/D19-1410/  
+Singh, V. K., & Sinha, K. (2025). Exploring the Impact of AI tools on Recruitment: Efficiency and fairness in 
+hiring practices. JOURNAL OF ADVANCE AND FUTURE RESEARCH, 3(10). 
+https://rjwave.org//jaafr/viewpaperforall.php?paper=JAAFR2510018  
+ 
+
+ 
+ 
+Project 
+Proposal 
+ 
+ 
+10 | P a g e  
+ 
+Appendix 
+Appendix A 
+1. Functional Requirements 
+ 
+1.1 User Functional Requirements 
+# 
+Requirement 
+Category 
+1 
+Users must be able to browse and view all job postings on the 
+homepage without logging in. 
+Access 
+2 
+Users must be able to search and filter jobs by title, location, and job 
+type on the homepage. 
+Search & 
+Filter 
+3 
+When visitors click Apply or Post a Job, the system must redirect 
+them to the login page then return them to their intended action after 
+login. 
+Authentication 
+4 
+Users must be able to login via Google OAuth 2.0 with CSRF state 
+token validation; no manual registration required. 
+Authentication 
+5 
+Any logged-in user must be able to post a job with title, company, 
+description, location, job type, and required skills. 
+Job Posting 
+6 
+Any logged-in user must be able to apply for any job posted by 
+another user; a user must not be able to apply for their own posting. 
+Application 
+7 
+When a logged-in user clicks Apply, the system must present a 10-
+question MCQ quiz that the applicant must complete before 
+submitting a CV. 
+Quiz 
+8 
+Applicants must be able to navigate between quiz questions and 
+submit their answers within the allotted time. 
+Quiz 
+9 
+Applicants scoring 12 or above out of 15 must be granted access to 
+the CV upload page for that specific job. 
+Quiz 
+10 
+Applicants scoring below 7 must be shown a 24-hour retry 
+countdown with a maximum of 2 attempts per job per user. 
+Quiz 
+11 
+Applicants must be able to upload their CV in PDF format after 
+passing the quiz for that job. 
+CV Upload 
+12 
+Applicants must be able to view their own application status per job: 
+Quiz Passed, CV Uploaded, or Under Review. 
+Status 
+Tracking 
+13 
+Job posters must be able to view all applicants for their own posting 
+ranked by the combined hybrid score, including quiz score, tab 
+switch count, AI scores, skill gaps, and AI explanation. 
+Recruiter View 
+14 
+Job posters must be able to view individual CV content with dual-
+layer highlighting: green for matched skill keywords and yellow for 
+BERT-matched sentences. 
+Recruiter View 
+15 
+Job posters must be able to export all applicant rankings including 
+quiz scores as a downloadable CSV file. 
+Recruiter View 
+Table 5: User Functional Requirements 
+
+ 
+ 
+Project 
+Proposal 
+ 
+ 
+11 | P a g e  
+ 
+ 
+1.2 System Functional Requirements 
+# 
+Requirement 
+Category 
+1 
+Job listings must display title, company, location, job type, and a short 
+description preview on the public homepage. 
+Display 
+2 
+The system must automatically generate a 10-question MCQ quiz using 
+Google Gemini 2.5 Flash based on the job description and industry 
+when an applicant clicks Apply. 
+Quiz 
+Generation 
+3 
+Gemini must generate 20 questions per job; each applicant must receive 
+a randomized selection of 15 with shuffled answer options so no two 
+applicants see the same quiz. 
+Quiz 
+Generation 
+4 
+The quiz must enforce a server-side 10-minute timer; submissions 
+received after 300 seconds must be rejected and scored zero regardless 
+of frontend state. 
+Quiz 
+Enforcement 
+5 
+The system must detect and record tab switches during the quiz; 3 
+switches must trigger automatic quiz submission with the current 
+answers. 
+Quiz 
+Enforcement 
+6 
+All quiz answers must be scored entirely on the server side; the correct 
+answers must never be transmitted to the frontend at any point. 
+Security 
+7 
+Every uploaded PDF must pass through a mandatory 6-layer security 
+pipeline before being written to disk. 
+Security 
+8 
+The system must automatically extract full text from uploaded PDFs 
+using PyMuPDF at upload time and store it in MongoDB. 
+CV Processing 
+9 
+The system must rank uploaded CVs based on quiz performance and 
+semantic similarity between the CV and job description. 
+Ranking 
+10 
+The system must identify matched and missing skills from each CV 
+relative to the job description. 
+Analysis 
+11 
+The system must generate a plain-language explanation summarizing 
+each applicant's strengths and skill gaps. 
+Analysis 
+Table 6:System Functional Requirements 
+ 
+2.Non-Functional Requirements 
+# 
+Requirement 
+Category 
+1 
+AI models must be loaded once at system startup to prevent repeated 
+initialization and improve performance. 
+Performance 
+2 
+BERT inference per CV must be completed within 10 seconds on CPU 
+hardware without requiring a GPU. 
+Performance 
+3 
+The public job listings homepage must be loaded within 3 seconds for 
+up to 500 active job postings. 
+Performance 
+4 
+The quiz timer must be enforced server-side, the frontend countdown is 
+visual only and cannot be manipulated to extend the allowed time. 
+Security 
+5 
+PDF uploads must be rejected if file size exceeds 5MB, if extracted text 
+is fewer than 50 characters, or if extracted text exceeds 50,000 
+characters. 
+Security 
+
+ 
+ 
+Project 
+Proposal 
+ 
+ 
+12 | P a g e  
+ 
+6 
+All protected API routes must require a valid JWT token, and the 
+unauthenticated requests must receive HTTP 401 and authenticated 
+users accessing others' resources must receive HTTP 403. 
+Security 
+7 
+API endpoints must implement rate limiting to prevent abuse and 
+denial-of-service attempts. 
+Security 
+8 
+All production traffic must be served over HTTPS TLS 1.2 or higher — 
+HTTP requests must automatically redirect to HTTPS. 
+Security 
+9 
+Quiz submission must be rate-limited to 5 requests per minute per IP, 
+login to 3 per minute, and job posting to 10 per hour per account using 
+Flask-Limiter. 
+Security 
+10 
+The quiz interface must clearly display the remaining time, current 
+question number, and tab switch warnings in real time throughout the 
+attempt. 
+Usability 
+11 
+All MongoDB operations must be wrapped in try/except with safe 
+return values the raw exceptions and stack traces must never be exposed 
+to the frontend. 
+Reliability 
+12 
+The system must achieve at least 99% uptime during demonstration and 
+testing phases. 
+Reliability 
+13 
+All credentials and API keys must be securely stored outside the source 
+code and must not be hardcoded. 
+Security  
+Table 7:  Non-Functional Requirements 
+Appendix B 
+ 
+Gantt Chart Link:  
+https://drive.google.com/drive/folders/1bKo9EpOcVtUCdFLQwwnVWSazjfKCY5gj?usp=sharing   
+
+ 
+ 
+Project 
+Proposal 
+ 
+ 
+13 | P a g e  
+ 
+Use Case Diagram 
+ 
+Figure 2 : Use Case Diagram  
+ 
+Group Contract  
+1. The subject matter of this contract 
+This contract is entered into by the students named below for the purpose of ensuring that each individual group 
+member fulfills his/her obligations for completing the group assignment for the unit CSG3101 Applied Project.   
+2. The consideration 
+1. All group members will be punctual at meetings. 
+2. All group members should attend meetings unless by prior agreement with the group. 
+3. All group members will stay at the meeting until it is agreed that the meeting is adjourned. 
+4. All group members will agree to a specific day/time for each weekly meeting and an agreed procedure for 
+informing all other members prior to any missed meetings.  
+5. All group members will come to the meetings prepared by completing the agreed tasks on time. 
+6. The group will actively seek the contributions and opinions of each member at meetings and during group 
+discussions. 
+7. Each group member will take turns at both listening and talking. 
+
+ 
+ 
+Project 
+Proposal 
+ 
+ 
+14 | P a g e  
+ 
+8. Dominating the group’s discussion and decision making is not acceptable. 
+9. Group members will take turns in writing down minutes of the meeting. 
+10. The group member taking minutes will record allocated tasks to be completed by group members by name 
+and agreed deadlines for task completion. 
+11. The group members must decide and declare which method of communication is to be the preferred and 
+agreed method (i.e., MS Teams, ECU email, face-to-face. 
+12. The group members must decide on an auditable and verifiable method of detailing completed tasks and or 
+individual elements. (i.e., Google groups, tasks management, written master file)  
+13. Work allocation will be according to an agreed procedure and is documented below (insert method of 
+breaking down the assignment and allocation of work to group members). 
+14. Where disputes arise regarding the work tasks or agreed behaviors in which a group member is not 
+performing according to the terms of this agreement, the following process will be entered into to resolve 
+the dispute: (insert the dispute resolution procedure for your group).  Disputes must be resolved within the 
+group and documentation must be retained that relates to attempts to resolve a dispute or to encourage a 
+group member to make his or her contribution to the assignment). 
+15. Ejection of a non-performing or disruptive group member. The Contract MUST include a specific method 
+for dealing with group members where the performance of the group is affected. 
+3. Names and signatures of the parties to this Group Contract 
+Student signature 
+ 
+Student name 
+(printed) 
+Student Number 
+Date 
+ 
+Kuruppu Mudalige 
+Tharaka Madusha 
+Kuruppu 
+10675270 
+15/03/2026 
+ 
+Asvin Fernando 
+10675493 
+15/03/2026 
+ 
+Yapa Appu Hamilage 
+Don Vishwa Shiwanka 
+Jayasinghe 
+10675273 
+15/03/2026 
+ 
+HETTIARACHCHIGE 
+DON Sehan Denuka 
+Hettiarachchi 
+10637777 
+15/03/2026 
+ 
+HEWA KIRINDAGE 
+Vinuka Janandith 
+Rathnayake 
+10685113 
+15/03/2026 
+ 
+ 
+Date of Fully Signed copy given to Supervisor and Unit Coordinator __________________________ 
+

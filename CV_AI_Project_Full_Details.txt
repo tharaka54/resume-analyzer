@@ -1,0 +1,117 @@
+========================================================================
+HireIQ - AI-POWERED RECRUITMENT PLATFORM (CV_AI)
+Full Project Documentation & Requirements
+Applied Project | CSG3101
+========================================================================
+
+1. PROJECT OVERVIEW
+------------------------------------------------------------------------
+Project Name: HireIQ — Intelligent CV Screening & Skill Assessment Platform
+Project Goal: To develop a secure, AI-powered web platform that enables any user to publicly browse job postings, post job vacancies, and automatically screen applicants through role-specific AI-generated quizzes and a hybrid NLP-based CV ranking engine combining TF-IDF and BERT semantic similarity, enabling job posters to identify the most qualified candidates efficiently and objectively across any industry.
+Project Supervisor: Ms. Ann Roshanie Appuhamy
+
+TEAM DETAILS:
+1. Kuruppu Mudalige Tharaka Madusha Kuruppu (10675270) - Project Manager / Backend & DevOps Engineer
+2. Asvin Fernando (10675493) - AI / NLP Engineer
+3. Yapa Appu Hamilage Don Vishwa Shiwanka Jayasinghe (10675273) - Frontend Developer
+4. HETTIARACHCHIGE DON Sehan Denuka Hettiarachchi (10637777) - Full-Stack & Security Engineer
+5. HEWA KIRINDAGE Vinuka Janandith Rathnayake (10685113) - Documentation & Testing Specialist
+
+2. BACKGROUND & PROBLEM STATEMENT
+------------------------------------------------------------------------
+The average recruiter spends 6 seconds on an initial resume review, leading to inconsistent screening. Traditional Applicant Tracking Systems (ATS) use inflexible keyword matching that excludes highly competent candidates (the "hidden worker" problem) who lack precise keywords. Furthermore, candidates often lie on CVs or are pre-coached for interviews.
+HireIQ solves this by replacing subjective manual screening with a secure, data-driven pipeline featuring anti-cheating measures (timed AI Quizzes) and an advanced hybrid NLP CV ranking engine (TF-IDF + BERT) that measures actual competence and semantic similarity to the job description.
+
+3. PROJECT SCOPE & FEATURES
+------------------------------------------------------------------------
+IN-SCOPE FEATURES:
+- Public job listings homepage with search and filter.
+- Google OAuth 2.0 Authentication with CSRF state token verification.
+- Authenticated users can post job vacancies with required skills.
+- AI Quiz Generation (Google Gemini 2.5 Flash), generating 15 random questions per job posting out of a pool of 20, with shuffled answers.
+- 10-minute server-side quiz timer (strict enforcement).
+- Tab-switch detection (3 switches trigger auto-submission).
+- CV upload pipeline gated behind passing the quiz (12/15 score) with retry limits.
+- Mandatory 6-tier PDF security validation pipeline upon upload.
+- Hybrid NLP CV Ranking System: Quiz Score (20%), TF-IDF (32%), and BERT semantic similarity (48%).
+- Gemini 2.5 Flash generates plain-English applicant summaries.
+- Real-time WebSocket ranking progress for recruiters.
+- Resume Viewer with dual-layer highlighting (Green = keyword match, Yellow = BERT semantic match).
+- CSV export of applicant rankings.
+
+OUT-OF-SCOPE FEATURES:
+- Hardware/IoT integrations (webcams, biometric scanners).
+- Enterprise-level compliance audits (GDPR/ISO 27001).
+- Monetization or job ad marketplaces.
+- Deep behavioral fraud detection (keystroke dynamics, etc.).
+- Multi-language support (English only).
+- Integration with external HRIS/ERP systems.
+
+4. USER FUNCTIONAL REQUIREMENTS
+------------------------------------------------------------------------
+1. Users must be able to browse and view all job postings on the homepage without logging in.
+2. Users must be able to search and filter jobs by title, location, and job type.
+3. Visitors clicking Apply or Post a Job must be redirected to login, then returned to their action.
+4. Users must be able to login via Google OAuth 2.0 with CSRF token (no manual registration).
+5. Logged-in users must be able to post jobs with title, company, description, location, type, and skills.
+6. Logged-in users must be able to apply to jobs posted by others (not their own).
+7. Applicants must complete a 15-question MCQ quiz before submitting a CV.
+8. Applicants must be able to navigate quiz questions and submit within the allotted time.
+9. Applicants scoring 12+ out of 15 gain access to the CV upload page.
+10. Applicants scoring below 7 face a 24-hour retry countdown (max 2 attempts per user per job).
+11. Applicants must upload CVs in PDF format after passing the quiz.
+12. Applicants must be able to view application status (Quiz Passed, CV Uploaded, Under Review).
+13. Job posters must be able to view applicants ranked by hybrid score (including tab switches, AI scores).
+14. Job posters must be able to view CVs with dual-layer color highlighting.
+15. Job posters must be able to export applicant rankings as a CSV.
+
+5. SYSTEM FUNCTIONAL REQUIREMENTS
+------------------------------------------------------------------------
+1. Job listings display basic details preview on the homepage.
+2. System auto-generates MCQ quizzes using Gemini 2.5 Flash from job description/industry.
+3. Gemini generates 20 questions; system randomized 15 questions & shuffles answers for each applicant.
+4. Server-side 10-minute timer enforcement (late submissions scored zero).
+5. System detects tab-switches (3 switches auto-submit the quiz).
+6. Total server-side scoring (correct answers never sent to frontend).
+7. Uploaded PDFs pass a mandatory 6-layer security pipeline before saving.
+8. PyMuPDF extracts full text automatically at upload time to store in MongoDB.
+9. System ranks CVs on quiz performance and semantic similarity (CV vs Job Description).
+10. System identifies matched and missing skills relative to the job.
+11. System uses Gemini to generate a plain-language explanation summarizing strengths/gaps.
+
+6. NON-FUNCTIONAL REQUIREMENTS
+------------------------------------------------------------------------
+1. AI Models (BERT/TF-IDF) loaded once at startup to improve performance.
+2. BERT inference completes within 10 seconds per CV on CPU (no GPU required).
+3. Public homepage loads within 3 seconds for up to 500 active jobs.
+4. Quiz timer enforced on server-side; frontend visual countdown cannot be manipulated.
+5. PDF uploads rejected if >5MB in size, or if extracted text is <50 chars or >50,000 chars.
+6. Protected API routes require valid JWT tokens (HTTP 401/403 returned on failure).
+7. API endpoints implement rate limiting to prevent DDoS.
+8. All production traffic served over HTTPS TLS 1.2+ (HTTP redirects to HTTPS).
+9. Rate Limits via Flask-Limiter: Quiz (5/min/IP), Login (3/min), Job Posting (10/hour/account).
+10. Quiz UI must display remaining time, current question, and tab switch warnings.
+11. MongoDB operations wrapper in try/except; raw stacks never exposed to frontend.
+12. System achieves 99% uptime during demonstration phase.
+13. API keys and credentials stored securely outside source code (not hardcoded).
+
+7. TOOLS AND TECHNICAL REQUIREMENTS
+------------------------------------------------------------------------
+- Frontend: HTML, CSS, JavaScript (Vanilla UI)
+- Backend: Python, Flask, Flask-Sock (WebSockets)
+- Database: MongoDB, PyMongo
+- AI & NLP: Google Gemini 2.5 Flash API, HuggingFace BERT (all-MiniLM-L6-v2), scikit-learn, spaCy, NLTK
+- File Processing: PyMuPDF (fitz), python-magic
+- Authentication & Security: Google OAuth 2.0, PyJWT, Flask-Limiter, Bleach (XSS), OWASP ZAP (VAPT)
+- Web Server: Nginx, HTTPS
+- Source Control: GitHub
+- Testing: Postman, pytest
+- Design / Prototyping: Draw.io, Lucidchart
+
+8. FUTURE IMPROVEMENTS
+------------------------------------------------------------------------
+- Native mobile application (iOS/Android) with push notifications.
+- Expansion to support skills-based hiring with dynamic skill graphing and automated upskilling suggestions.
+- Predictive hire success scoring model trained on historical hiring outcomes.
+- Practical skills assessment module supporting live role-specific coding challenges and scenario tasks.
+========================================================================
