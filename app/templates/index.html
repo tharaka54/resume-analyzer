@@ -12,7 +12,10 @@
     <div id="app">
         <!-- We will build our vanilla JS app here -->
         <header>
-            <h1>HireIQ</h1>
+            <div style="display: flex; align-items: center; gap: 15px; cursor: pointer;" onclick="window.history.pushState(null, '', '/'); window.dispatchEvent(new Event('popstate'))">
+                <img src="/static/img/logo.png" alt="HireIQ Logo" style="height: 40px; border-radius: 8px;">
+                <h1>HireIQ</h1>
+            </div>
             <nav id="nav-links">
                 <a href="/">Jobs</a>
                 <button id="login-btn">Login with Google</button>

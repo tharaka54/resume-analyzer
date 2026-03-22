@@ -57,7 +57,7 @@ def run_ranking(job_id):
         # Fetch quiz score for this user/job
         attempts = get_recent_attempts(job_id, user_id)
         best_score = max([a["score"] for a in attempts]) if attempts else 0
-        quiz_pct = best_score / 10.0  # e.g., 7/10 becomes 0.7
+        quiz_pct = best_score / 15.0  # e.g., 12/15 becomes 0.8
 
         # Run AI scoring
         result = score_resume(job_description, raw_text, quiz_score=quiz_pct)

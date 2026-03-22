@@ -16,7 +16,7 @@ def start_quiz(job_id):
     """
     # Check cooldown/attempts
     attempts = get_recent_attempts(job_id, g.user_id)
-    if len(attempts) >= 2:
+    if len(attempts) >= 3:
         return jsonify({"error": "Maximum 2 attempts reached for this job."}), 403
 
     if attempts:
@@ -34,7 +34,7 @@ def start_quiz(job_id):
 
     pool = pool_doc["questions"]
     # Pick 10 random
-    selected = random.sample(pool, min(10, len(pool)))
+    selected = random.sample(pool, min(15, len(pool)))
 
     # Strip correct_index before sending to client
     sanitized_quiz = []
@@ -73,7 +73,7 @@ def start_quiz(job_id):
         upsert=True
     )
 
-    return jsonify({"questions": sanitized_quiz, "timer_seconds": 300}), 200
+    return jsonify({"questions": sanitized_quiz, "timer_seconds": 600}), 200
 
 
 @quiz_bp.route("/<job_id>/submit", methods=["POST"])
@@ -100,7 +100,7 @@ def submit_quiz(job_id):
     time_spent = (datetime.now(timezone.utc) - started_at).total_seconds()
     
     # 5 min timer enforcement server side + 5 sec buffer
-    if time_spent > 305:
+    if time_spent > 605:
         track_quiz_attempt(job_id, g.user_id, 0, False, tab_switches)
         db.quiz_sessions.delete_one({"_id": session["_id"]})
         return jsonify({"score": 0, "passed": False, "message": "Time limit exceeded. Scored zero."}), 200
@@ -113,9 +113,54 @@ def submit_quiz(job_id):
             if ans == server_answers[i]["correct_index"]:
                 score += 1
 
-    passed = score >= 7
+    passed = score >= 12
     track_quiz_attempt(job_id, g.user_id, score, passed, tab_switches)
     db.quiz_sessions.delete_one({"_id": session["_id"]})
 
     return jsonify({"score": score, "passed": passed}), 200
 
+@quiz_bp.route("/<job_id>/view", methods=["GET"])
+@require_auth
+def view_quiz(job_id):
+    """
+    GET /quiz/<job_id>/view
+    Allow recruiter to view the generated quiz.
+    """
+    from app.models.job import get_job_by_id
+    job = get_job_by_id(job_id, g.user_id)
+    if not job:
+        return jsonify({"error": "Unauthorized or Job not found"}), 403
+
+    pool_doc = get_job_quiz_pool(job_id)
+    if not pool_doc or not pool_doc.get("questions"):
+        return jsonify({"error": "Quiz is currently generating or unavailable."}), 404
+        
+    return jsonify({"questions": pool_doc["questions"]}), 200
+
+@quiz_bp.route("/<job_id>/regenerate", methods=["POST"])
+@require_auth
+def regenerate_quiz(job_id):
+    """
+    POST /quiz/<job_id>/regenerate
+    Allow recruiter to regenerate the quiz.
+    """
+    from app.models.job import get_job_by_id
+    job = get_job_by_id(job_id, g.user_id)
+    if not job:
+        return jsonify({"error": "Unauthorized or Job not found"}), 403
+        
+    title = job.get("title", "")
+    description = job.get("description", "")
+    required_skills = job.get("required_skills", "")
+    
+    # Generate the Quiz pool in background
+    import threading
+    from app.ai.quiz_generator import generate_quiz_for_job
+    from app.models.quiz import save_job_quiz_pool
+
+    def gen_quiz(jid, t, d, s):
+        questions = generate_quiz_for_job(t, d, s)
+        save_job_quiz_pool(jid, questions)
+
+    threading.Thread(target=gen_quiz, args=(job_id, title, description, required_skills)).start()
+    return jsonify({"message": "Quiz regeneration started in background."}), 200

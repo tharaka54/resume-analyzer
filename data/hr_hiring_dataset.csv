@@ -1,0 +1,963 @@
+candidate_id,category,tfidf_score,bert_score,skills_matched,hired
+KAGGLE_1,Data Science,0.337,0.559,22,0
+KAGGLE_2,Data Science,0.29,0.467,13,0
+KAGGLE_3,Data Science,0.309,0.558,20,0
+KAGGLE_4,Data Science,0.248,0.514,14,0
+KAGGLE_5,Data Science,0.155,0.414,16,0
+KAGGLE_6,Data Science,0.344,0.49,14,0
+KAGGLE_7,Data Science,0.55,0.818,13,0
+KAGGLE_8,Data Science,0.946,1.0,15,1
+KAGGLE_9,Data Science,0.943,1.0,24,1
+KAGGLE_10,Data Science,0.525,0.772,16,0
+KAGGLE_11,Data Science,0.337,0.471,19,0
+KAGGLE_12,Data Science,0.29,0.403,22,0
+KAGGLE_13,Data Science,0.309,0.516,21,0
+KAGGLE_14,Data Science,0.248,0.48,22,0
+KAGGLE_15,Data Science,0.155,0.453,21,0
+KAGGLE_16,Data Science,0.344,0.623,12,0
+KAGGLE_17,Data Science,0.55,0.652,21,0
+KAGGLE_18,Data Science,0.946,1.0,15,1
+KAGGLE_19,Data Science,0.943,1.0,23,1
+KAGGLE_20,Data Science,0.525,0.681,19,0
+KAGGLE_21,Data Science,0.337,0.49,14,0
+KAGGLE_22,Data Science,0.29,0.392,16,0
+KAGGLE_23,Data Science,0.309,0.49,24,0
+KAGGLE_24,Data Science,0.248,0.404,14,0
+KAGGLE_25,Data Science,0.155,0.443,23,0
+KAGGLE_26,Data Science,0.344,0.476,16,0
+KAGGLE_27,Data Science,0.55,0.82,13,0
+KAGGLE_28,Data Science,0.946,1.0,19,1
+KAGGLE_29,Data Science,0.943,1.0,17,1
+KAGGLE_30,Data Science,0.525,0.698,23,0
+KAGGLE_31,Data Science,0.337,0.508,17,0
+KAGGLE_32,Data Science,0.29,0.548,15,0
+KAGGLE_33,Data Science,0.309,0.507,18,0
+KAGGLE_34,Data Science,0.248,0.459,23,0
+KAGGLE_35,Data Science,0.155,0.404,13,0
+KAGGLE_36,Data Science,0.344,0.585,17,0
+KAGGLE_37,Data Science,0.55,0.818,16,0
+KAGGLE_38,Data Science,0.946,1.0,15,1
+KAGGLE_39,Data Science,0.943,1.0,19,1
+KAGGLE_40,Data Science,0.525,0.679,24,0
+KAGGLE_41,HR,0.012,0.274,3,0
+KAGGLE_42,HR,0.003,0.268,2,0
+KAGGLE_43,HR,0.0,0.277,2,0
+KAGGLE_44,HR,0.0,0.117,1,0
+KAGGLE_45,HR,0.0,0.252,0,0
+KAGGLE_46,HR,0.0,0.216,2,0
+KAGGLE_47,HR,0.0,0.203,1,0
+KAGGLE_48,HR,0.034,0.251,1,0
+KAGGLE_49,HR,0.0,0.156,2,0
+KAGGLE_50,HR,0.022,0.159,3,0
+KAGGLE_51,HR,0.125,0.298,4,0
+KAGGLE_52,HR,0.012,0.107,3,0
+KAGGLE_53,HR,0.003,0.283,2,0
+KAGGLE_54,HR,0.0,0.158,0,0
+KAGGLE_55,HR,0.0,0.3,1,0
+KAGGLE_56,HR,0.0,0.273,0,0
+KAGGLE_57,HR,0.0,0.148,2,0
+KAGGLE_58,HR,0.0,0.251,3,0
+KAGGLE_59,HR,0.034,0.156,3,0
+KAGGLE_60,HR,0.0,0.202,3,0
+KAGGLE_61,HR,0.022,0.224,1,0
+KAGGLE_62,HR,0.125,0.198,0,0
+KAGGLE_63,HR,0.012,0.187,2,0
+KAGGLE_64,HR,0.003,0.239,0,0
+KAGGLE_65,HR,0.0,0.259,1,0
+KAGGLE_66,HR,0.0,0.112,2,0
+KAGGLE_67,HR,0.0,0.227,1,0
+KAGGLE_68,HR,0.0,0.197,1,0
+KAGGLE_69,HR,0.0,0.189,2,0
+KAGGLE_70,HR,0.034,0.206,2,0
+KAGGLE_71,HR,0.0,0.26,1,0
+KAGGLE_72,HR,0.022,0.19,3,0
+KAGGLE_73,HR,0.125,0.247,4,0
+KAGGLE_74,HR,0.012,0.159,4,0
+KAGGLE_75,HR,0.003,0.232,4,0
+KAGGLE_76,HR,0.0,0.193,0,0
+KAGGLE_77,HR,0.0,0.193,0,0
+KAGGLE_78,HR,0.0,0.196,0,0
+KAGGLE_79,HR,0.0,0.216,4,0
+KAGGLE_80,HR,0.0,0.101,1,0
+KAGGLE_81,HR,0.034,0.257,4,0
+KAGGLE_82,HR,0.0,0.263,2,0
+KAGGLE_83,HR,0.022,0.159,1,0
+KAGGLE_84,HR,0.125,0.148,2,0
+KAGGLE_85,Advocate,0.0,0.0,8,0
+KAGGLE_86,Advocate,0.0,0.071,8,0
+KAGGLE_87,Advocate,0.0,0.0,6,0
+KAGGLE_88,Advocate,0.014,0.0,8,0
+KAGGLE_89,Advocate,0.009,0.003,5,0
+KAGGLE_90,Advocate,0.0,0.0,9,0
+KAGGLE_91,Advocate,0.02,0.0,9,0
+KAGGLE_92,Advocate,0.004,0.0,9,0
+KAGGLE_93,Advocate,0.128,0.216,6,0
+KAGGLE_94,Advocate,0.0,0.052,6,0
+KAGGLE_95,Advocate,0.0,0.0,7,0
+KAGGLE_96,Advocate,0.0,0.0,8,0
+KAGGLE_97,Advocate,0.0,0.044,10,0
+KAGGLE_98,Advocate,0.014,0.051,7,0
+KAGGLE_99,Advocate,0.009,0.052,8,0
+KAGGLE_100,Advocate,0.0,0.027,7,0
+KAGGLE_101,Advocate,0.02,0.112,10,0
+KAGGLE_102,Advocate,0.004,0.0,5,0
+KAGGLE_103,Advocate,0.128,0.127,11,0
+KAGGLE_104,Advocate,0.0,0.0,10,0
+KAGGLE_105,Arts,0.032,0.25,2,0
+KAGGLE_106,Arts,0.039,0.262,0,0
+KAGGLE_107,Arts,0.044,0.299,3,0
+KAGGLE_108,Arts,0.0,0.202,1,0
+KAGGLE_109,Arts,0.0,0.175,1,0
+KAGGLE_110,Arts,0.1,0.156,2,0
+KAGGLE_111,Arts,0.032,0.227,3,0
+KAGGLE_112,Arts,0.039,0.111,4,0
+KAGGLE_113,Arts,0.044,0.138,0,0
+KAGGLE_114,Arts,0.0,0.149,4,0
+KAGGLE_115,Arts,0.0,0.172,1,0
+KAGGLE_116,Arts,0.1,0.15,2,0
+KAGGLE_117,Arts,0.032,0.167,1,0
+KAGGLE_118,Arts,0.039,0.198,4,0
+KAGGLE_119,Arts,0.044,0.249,0,0
+KAGGLE_120,Arts,0.0,0.178,4,0
+KAGGLE_121,Arts,0.0,0.258,4,0
+KAGGLE_122,Arts,0.1,0.117,1,0
+KAGGLE_123,Arts,0.032,0.194,2,0
+KAGGLE_124,Arts,0.039,0.276,1,0
+KAGGLE_125,Arts,0.044,0.236,1,0
+KAGGLE_126,Arts,0.0,0.298,3,0
+KAGGLE_127,Arts,0.0,0.146,2,0
+KAGGLE_128,Arts,0.1,0.19,0,0
+KAGGLE_129,Arts,0.032,0.228,3,0
+KAGGLE_130,Arts,0.039,0.264,1,0
+KAGGLE_131,Arts,0.044,0.106,0,0
+KAGGLE_132,Arts,0.0,0.219,2,0
+KAGGLE_133,Arts,0.0,0.19,2,0
+KAGGLE_134,Arts,0.1,0.288,4,0
+KAGGLE_135,Arts,0.032,0.111,2,0
+KAGGLE_136,Arts,0.039,0.137,4,0
+KAGGLE_137,Arts,0.044,0.134,1,0
+KAGGLE_138,Arts,0.0,0.254,4,0
+KAGGLE_139,Arts,0.0,0.131,0,0
+KAGGLE_140,Arts,0.1,0.179,1,0
+KAGGLE_141,Web Designing,0.048,0.078,8,0
+KAGGLE_142,Web Designing,0.043,0.0,10,0
+KAGGLE_143,Web Designing,0.048,0.057,9,0
+KAGGLE_144,Web Designing,0.0,0.0,5,0
+KAGGLE_145,Web Designing,0.029,0.062,11,0
+KAGGLE_146,Web Designing,0.048,0.087,11,0
+KAGGLE_147,Web Designing,0.043,0.0,10,0
+KAGGLE_148,Web Designing,0.048,0.148,6,0
+KAGGLE_149,Web Designing,0.0,0.041,7,0
+KAGGLE_150,Web Designing,0.029,0.0,8,0
+KAGGLE_151,Web Designing,0.048,0.118,9,0
+KAGGLE_152,Web Designing,0.043,0.062,11,0
+KAGGLE_153,Web Designing,0.048,0.051,8,0
+KAGGLE_154,Web Designing,0.0,0.0,7,0
+KAGGLE_155,Web Designing,0.029,0.119,11,0
+KAGGLE_156,Web Designing,0.048,0.0,8,0
+KAGGLE_157,Web Designing,0.043,0.0,9,0
+KAGGLE_158,Web Designing,0.048,0.015,11,0
+KAGGLE_159,Web Designing,0.0,0.0,6,0
+KAGGLE_160,Web Designing,0.029,0.076,5,0
+KAGGLE_161,Web Designing,0.048,0.0,10,0
+KAGGLE_162,Web Designing,0.043,0.077,6,0
+KAGGLE_163,Web Designing,0.048,0.02,6,0
+KAGGLE_164,Web Designing,0.0,0.0,5,0
+KAGGLE_165,Web Designing,0.029,0.0,10,0
+KAGGLE_166,Web Designing,0.048,0.036,11,0
+KAGGLE_167,Web Designing,0.043,0.075,6,0
+KAGGLE_168,Web Designing,0.048,0.05,8,0
+KAGGLE_169,Web Designing,0.0,0.0,11,0
+KAGGLE_170,Web Designing,0.029,0.0,5,0
+KAGGLE_171,Web Designing,0.048,0.032,10,0
+KAGGLE_172,Web Designing,0.043,0.0,7,0
+KAGGLE_173,Web Designing,0.048,0.117,6,0
+KAGGLE_174,Web Designing,0.0,0.012,10,0
+KAGGLE_175,Web Designing,0.029,0.0,8,0
+KAGGLE_176,Web Designing,0.048,0.109,9,0
+KAGGLE_177,Web Designing,0.043,0.129,7,0
+KAGGLE_178,Web Designing,0.048,0.025,10,0
+KAGGLE_179,Web Designing,0.0,0.0,7,0
+KAGGLE_180,Web Designing,0.029,0.0,7,0
+KAGGLE_181,Web Designing,0.048,0.127,7,0
+KAGGLE_182,Web Designing,0.043,0.11,9,0
+KAGGLE_183,Web Designing,0.048,0.003,11,0
+KAGGLE_184,Web Designing,0.0,0.0,5,0
+KAGGLE_185,Web Designing,0.029,0.0,8,0
+KAGGLE_186,Mechanical Engineer,0.038,0.085,5,0
+KAGGLE_187,Mechanical Engineer,0.154,0.182,8,0
+KAGGLE_188,Mechanical Engineer,0.0,0.0,7,0
+KAGGLE_189,Mechanical Engineer,0.057,0.145,11,0
+KAGGLE_190,Mechanical Engineer,0.097,0.106,7,0
+KAGGLE_191,Mechanical Engineer,0.038,0.075,11,0
+KAGGLE_192,Mechanical Engineer,0.154,0.199,5,0
+KAGGLE_193,Mechanical Engineer,0.0,0.053,11,0
+KAGGLE_194,Mechanical Engineer,0.057,0.0,11,0
+KAGGLE_195,Mechanical Engineer,0.097,0.057,9,0
+KAGGLE_196,Mechanical Engineer,0.038,0.079,6,0
+KAGGLE_197,Mechanical Engineer,0.154,0.151,11,0
+KAGGLE_198,Mechanical Engineer,0.0,0.0,10,0
+KAGGLE_199,Mechanical Engineer,0.057,0.118,9,0
+KAGGLE_200,Mechanical Engineer,0.097,0.051,8,0
+KAGGLE_201,Mechanical Engineer,0.038,0.01,8,0
+KAGGLE_202,Mechanical Engineer,0.154,0.183,6,0
+KAGGLE_203,Mechanical Engineer,0.0,0.063,8,0
+KAGGLE_204,Mechanical Engineer,0.057,0.034,6,0
+KAGGLE_205,Mechanical Engineer,0.097,0.179,9,0
+KAGGLE_206,Mechanical Engineer,0.038,0.043,8,0
+KAGGLE_207,Mechanical Engineer,0.154,0.238,8,0
+KAGGLE_208,Mechanical Engineer,0.0,0.023,7,0
+KAGGLE_209,Mechanical Engineer,0.057,0.0,10,0
+KAGGLE_210,Mechanical Engineer,0.097,0.079,11,0
+KAGGLE_211,Mechanical Engineer,0.038,0.016,6,0
+KAGGLE_212,Mechanical Engineer,0.154,0.097,9,0
+KAGGLE_213,Mechanical Engineer,0.0,0.045,11,0
+KAGGLE_214,Mechanical Engineer,0.057,0.103,7,0
+KAGGLE_215,Mechanical Engineer,0.097,0.116,10,0
+KAGGLE_216,Mechanical Engineer,0.038,0.022,11,0
+KAGGLE_217,Mechanical Engineer,0.154,0.073,9,0
+KAGGLE_218,Mechanical Engineer,0.0,0.038,11,0
+KAGGLE_219,Mechanical Engineer,0.057,0.129,5,0
+KAGGLE_220,Mechanical Engineer,0.097,0.107,5,0
+KAGGLE_221,Mechanical Engineer,0.038,0.134,7,0
+KAGGLE_222,Mechanical Engineer,0.154,0.251,5,0
+KAGGLE_223,Mechanical Engineer,0.0,0.001,7,0
+KAGGLE_224,Mechanical Engineer,0.057,0.086,7,0
+KAGGLE_225,Mechanical Engineer,0.097,0.113,6,0
+KAGGLE_226,Sales,0.021,0.142,0,0
+KAGGLE_227,Sales,0.023,0.123,0,0
+KAGGLE_228,Sales,0.054,0.211,0,0
+KAGGLE_229,Sales,0.061,0.108,2,0
+KAGGLE_230,Sales,0.0,0.161,3,0
+KAGGLE_231,Sales,0.021,0.231,3,0
+KAGGLE_232,Sales,0.023,0.239,4,0
+KAGGLE_233,Sales,0.054,0.279,1,0
+KAGGLE_234,Sales,0.061,0.146,1,0
+KAGGLE_235,Sales,0.0,0.23,1,0
+KAGGLE_236,Sales,0.021,0.257,3,0
+KAGGLE_237,Sales,0.023,0.101,3,0
+KAGGLE_238,Sales,0.054,0.221,2,0
+KAGGLE_239,Sales,0.061,0.23,2,0
+KAGGLE_240,Sales,0.0,0.102,0,0
+KAGGLE_241,Sales,0.021,0.101,0,0
+KAGGLE_242,Sales,0.023,0.225,2,0
+KAGGLE_243,Sales,0.054,0.112,3,0
+KAGGLE_244,Sales,0.061,0.175,4,0
+KAGGLE_245,Sales,0.0,0.252,3,0
+KAGGLE_246,Sales,0.021,0.157,1,0
+KAGGLE_247,Sales,0.023,0.233,2,0
+KAGGLE_248,Sales,0.054,0.2,4,0
+KAGGLE_249,Sales,0.061,0.179,4,0
+KAGGLE_250,Sales,0.0,0.156,3,0
+KAGGLE_251,Sales,0.021,0.215,4,0
+KAGGLE_252,Sales,0.023,0.136,2,0
+KAGGLE_253,Sales,0.054,0.108,2,0
+KAGGLE_254,Sales,0.061,0.142,4,0
+KAGGLE_255,Sales,0.0,0.247,2,0
+KAGGLE_256,Sales,0.021,0.153,4,0
+KAGGLE_257,Sales,0.023,0.252,0,0
+KAGGLE_258,Sales,0.054,0.137,2,0
+KAGGLE_259,Sales,0.061,0.114,1,0
+KAGGLE_260,Sales,0.0,0.191,3,0
+KAGGLE_261,Sales,0.021,0.251,0,0
+KAGGLE_262,Sales,0.023,0.123,2,0
+KAGGLE_263,Sales,0.054,0.12,0,0
+KAGGLE_264,Sales,0.061,0.141,4,0
+KAGGLE_265,Sales,0.0,0.185,2,0
+KAGGLE_266,Health and fitness,0.029,0.0,10,0
+KAGGLE_267,Health and fitness,0.0,0.097,11,0
+KAGGLE_268,Health and fitness,0.02,0.0,11,0
+KAGGLE_269,Health and fitness,0.003,0.0,11,0
+KAGGLE_270,Health and fitness,0.06,0.064,5,0
+KAGGLE_271,Health and fitness,0.028,0.005,8,0
+KAGGLE_272,Health and fitness,0.029,0.062,6,0
+KAGGLE_273,Health and fitness,0.0,0.084,10,0
+KAGGLE_274,Health and fitness,0.02,0.0,7,0
+KAGGLE_275,Health and fitness,0.003,0.036,6,0
+KAGGLE_276,Health and fitness,0.06,0.043,11,0
+KAGGLE_277,Health and fitness,0.028,0.021,6,0
+KAGGLE_278,Health and fitness,0.029,0.088,8,0
+KAGGLE_279,Health and fitness,0.0,0.0,7,0
+KAGGLE_280,Health and fitness,0.02,0.106,11,0
+KAGGLE_281,Health and fitness,0.003,0.034,8,0
+KAGGLE_282,Health and fitness,0.06,0.073,8,0
+KAGGLE_283,Health and fitness,0.028,0.077,9,0
+KAGGLE_284,Health and fitness,0.029,0.047,8,0
+KAGGLE_285,Health and fitness,0.0,0.0,6,0
+KAGGLE_286,Health and fitness,0.02,0.029,8,0
+KAGGLE_287,Health and fitness,0.003,0.014,5,0
+KAGGLE_288,Health and fitness,0.06,0.134,6,0
+KAGGLE_289,Health and fitness,0.028,0.0,6,0
+KAGGLE_290,Health and fitness,0.029,0.093,5,0
+KAGGLE_291,Health and fitness,0.0,0.05,9,0
+KAGGLE_292,Health and fitness,0.02,0.107,10,0
+KAGGLE_293,Health and fitness,0.003,0.0,5,0
+KAGGLE_294,Health and fitness,0.06,0.113,10,0
+KAGGLE_295,Health and fitness,0.028,0.0,11,0
+KAGGLE_296,Civil Engineer,0.016,0.074,7,0
+KAGGLE_297,Civil Engineer,0.0,0.051,10,0
+KAGGLE_298,Civil Engineer,0.018,0.0,9,0
+KAGGLE_299,Civil Engineer,0.019,0.038,9,0
+KAGGLE_300,Civil Engineer,0.122,0.078,9,0
+KAGGLE_301,Civil Engineer,0.072,0.0,8,0
+KAGGLE_302,Civil Engineer,0.016,0.024,8,0
+KAGGLE_303,Civil Engineer,0.0,0.0,8,0
+KAGGLE_304,Civil Engineer,0.018,0.096,11,0
+KAGGLE_305,Civil Engineer,0.019,0.032,8,0
+KAGGLE_306,Civil Engineer,0.122,0.139,8,0
+KAGGLE_307,Civil Engineer,0.072,0.145,11,0
+KAGGLE_308,Civil Engineer,0.016,0.073,11,0
+KAGGLE_309,Civil Engineer,0.0,0.0,6,0
+KAGGLE_310,Civil Engineer,0.018,0.0,7,0
+KAGGLE_311,Civil Engineer,0.019,0.119,10,0
+KAGGLE_312,Civil Engineer,0.122,0.139,10,0
+KAGGLE_313,Civil Engineer,0.072,0.052,6,0
+KAGGLE_314,Civil Engineer,0.016,0.115,5,0
+KAGGLE_315,Civil Engineer,0.0,0.0,10,0
+KAGGLE_316,Civil Engineer,0.018,0.0,7,0
+KAGGLE_317,Civil Engineer,0.019,0.033,7,0
+KAGGLE_318,Civil Engineer,0.122,0.028,10,0
+KAGGLE_319,Civil Engineer,0.072,0.007,7,0
+KAGGLE_320,Java Developer,0.0,0.0,5,0
+KAGGLE_321,Java Developer,0.016,0.0,8,0
+KAGGLE_322,Java Developer,0.129,0.064,11,0
+KAGGLE_323,Java Developer,0.042,0.0,9,0
+KAGGLE_324,Java Developer,0.145,0.112,10,0
+KAGGLE_325,Java Developer,0.036,0.067,11,0
+KAGGLE_326,Java Developer,0.0,0.0,10,0
+KAGGLE_327,Java Developer,0.0,0.0,6,0
+KAGGLE_328,Java Developer,0.032,0.021,7,0
+KAGGLE_329,Java Developer,0.037,0.104,7,0
+KAGGLE_330,Java Developer,0.031,0.003,7,0
+KAGGLE_331,Java Developer,0.03,0.073,9,0
+KAGGLE_332,Java Developer,0.111,0.071,10,0
+KAGGLE_333,Java Developer,0.035,0.087,11,0
+KAGGLE_334,Java Developer,0.0,0.0,10,0
+KAGGLE_335,Java Developer,0.016,0.046,7,0
+KAGGLE_336,Java Developer,0.129,0.071,6,0
+KAGGLE_337,Java Developer,0.042,0.0,6,0
+KAGGLE_338,Java Developer,0.145,0.167,7,0
+KAGGLE_339,Java Developer,0.036,0.0,10,0
+KAGGLE_340,Java Developer,0.0,0.0,8,0
+KAGGLE_341,Java Developer,0.0,0.098,9,0
+KAGGLE_342,Java Developer,0.032,0.016,11,0
+KAGGLE_343,Java Developer,0.037,0.0,7,0
+KAGGLE_344,Java Developer,0.031,0.045,9,0
+KAGGLE_345,Java Developer,0.03,0.0,10,0
+KAGGLE_346,Java Developer,0.111,0.198,8,0
+KAGGLE_347,Java Developer,0.035,0.029,7,0
+KAGGLE_348,Java Developer,0.0,0.0,7,0
+KAGGLE_349,Java Developer,0.016,0.0,11,0
+KAGGLE_350,Java Developer,0.129,0.041,11,0
+KAGGLE_351,Java Developer,0.042,0.054,6,0
+KAGGLE_352,Java Developer,0.145,0.183,11,0
+KAGGLE_353,Java Developer,0.036,0.032,9,0
+KAGGLE_354,Java Developer,0.0,0.052,9,0
+KAGGLE_355,Java Developer,0.0,0.0,9,0
+KAGGLE_356,Java Developer,0.032,0.046,8,0
+KAGGLE_357,Java Developer,0.037,0.0,7,0
+KAGGLE_358,Java Developer,0.031,0.015,11,0
+KAGGLE_359,Java Developer,0.03,0.0,5,0
+KAGGLE_360,Java Developer,0.111,0.061,11,0
+KAGGLE_361,Java Developer,0.035,0.0,5,0
+KAGGLE_362,Java Developer,0.0,0.016,8,0
+KAGGLE_363,Java Developer,0.016,0.0,9,0
+KAGGLE_364,Java Developer,0.129,0.044,11,0
+KAGGLE_365,Java Developer,0.042,0.0,5,0
+KAGGLE_366,Java Developer,0.145,0.143,7,0
+KAGGLE_367,Java Developer,0.036,0.033,8,0
+KAGGLE_368,Java Developer,0.0,0.06,10,0
+KAGGLE_369,Java Developer,0.0,0.0,10,0
+KAGGLE_370,Java Developer,0.032,0.128,6,0
+KAGGLE_371,Java Developer,0.037,0.0,6,0
+KAGGLE_372,Java Developer,0.031,0.0,5,0
+KAGGLE_373,Java Developer,0.03,0.055,9,0
+KAGGLE_374,Java Developer,0.111,0.014,6,0
+KAGGLE_375,Java Developer,0.035,0.111,10,0
+KAGGLE_376,Java Developer,0.0,0.0,10,0
+KAGGLE_377,Java Developer,0.016,0.097,7,0
+KAGGLE_378,Java Developer,0.129,0.165,7,0
+KAGGLE_379,Java Developer,0.042,0.0,10,0
+KAGGLE_380,Java Developer,0.145,0.148,9,0
+KAGGLE_381,Java Developer,0.036,0.116,6,0
+KAGGLE_382,Java Developer,0.0,0.0,9,0
+KAGGLE_383,Java Developer,0.0,0.0,8,0
+KAGGLE_384,Java Developer,0.032,0.0,11,0
+KAGGLE_385,Java Developer,0.037,0.02,8,0
+KAGGLE_386,Java Developer,0.031,0.0,9,0
+KAGGLE_387,Java Developer,0.03,0.007,5,0
+KAGGLE_388,Java Developer,0.111,0.017,10,0
+KAGGLE_389,Java Developer,0.035,0.0,5,0
+KAGGLE_390,Java Developer,0.0,0.0,10,0
+KAGGLE_391,Java Developer,0.016,0.099,6,0
+KAGGLE_392,Java Developer,0.129,0.062,8,0
+KAGGLE_393,Java Developer,0.042,0.0,7,0
+KAGGLE_394,Java Developer,0.145,0.147,5,0
+KAGGLE_395,Java Developer,0.036,0.0,5,0
+KAGGLE_396,Java Developer,0.0,0.047,11,0
+KAGGLE_397,Java Developer,0.0,0.059,9,0
+KAGGLE_398,Java Developer,0.032,0.118,9,0
+KAGGLE_399,Java Developer,0.037,0.023,5,0
+KAGGLE_400,Java Developer,0.031,0.115,7,0
+KAGGLE_401,Java Developer,0.03,0.0,9,0
+KAGGLE_402,Java Developer,0.111,0.156,9,0
+KAGGLE_403,Java Developer,0.035,0.087,8,0
+KAGGLE_404,Business Analyst,0.0,0.04,7,0
+KAGGLE_405,Business Analyst,0.014,0.077,10,0
+KAGGLE_406,Business Analyst,0.046,0.0,7,0
+KAGGLE_407,Business Analyst,0.025,0.0,6,0
+KAGGLE_408,Business Analyst,0.024,0.022,10,0
+KAGGLE_409,Business Analyst,0.012,0.066,5,0
+KAGGLE_410,Business Analyst,0.046,0.122,5,0
+KAGGLE_411,Business Analyst,0.025,0.093,6,0
+KAGGLE_412,Business Analyst,0.024,0.115,7,0
+KAGGLE_413,Business Analyst,0.012,0.0,11,0
+KAGGLE_414,Business Analyst,0.046,0.14,11,0
+KAGGLE_415,Business Analyst,0.025,0.106,5,0
+KAGGLE_416,Business Analyst,0.024,0.0,8,0
+KAGGLE_417,Business Analyst,0.012,0.0,6,0
+KAGGLE_418,Business Analyst,0.0,0.077,11,0
+KAGGLE_419,Business Analyst,0.014,0.0,6,0
+KAGGLE_420,Business Analyst,0.046,0.14,8,0
+KAGGLE_421,Business Analyst,0.025,0.104,6,0
+KAGGLE_422,Business Analyst,0.024,0.007,5,0
+KAGGLE_423,Business Analyst,0.012,0.01,6,0
+KAGGLE_424,Business Analyst,0.046,0.084,6,0
+KAGGLE_425,Business Analyst,0.025,0.04,7,0
+KAGGLE_426,Business Analyst,0.024,0.047,5,0
+KAGGLE_427,Business Analyst,0.012,0.0,5,0
+KAGGLE_428,Business Analyst,0.046,0.015,6,0
+KAGGLE_429,Business Analyst,0.025,0.017,6,0
+KAGGLE_430,Business Analyst,0.024,0.0,9,0
+KAGGLE_431,Business Analyst,0.012,0.092,6,0
+KAGGLE_432,SAP Developer,0.073,0.0,10,0
+KAGGLE_433,SAP Developer,0.035,0.096,6,0
+KAGGLE_434,SAP Developer,0.05,0.0,10,0
+KAGGLE_435,SAP Developer,0.016,0.003,5,0
+KAGGLE_436,SAP Developer,0.121,0.083,9,0
+KAGGLE_437,SAP Developer,0.087,0.127,7,0
+KAGGLE_438,SAP Developer,0.073,0.0,11,0
+KAGGLE_439,SAP Developer,0.035,0.084,8,0
+KAGGLE_440,SAP Developer,0.05,0.076,8,0
+KAGGLE_441,SAP Developer,0.016,0.0,11,0
+KAGGLE_442,SAP Developer,0.121,0.143,7,0
+KAGGLE_443,SAP Developer,0.087,0.089,6,0
+KAGGLE_444,SAP Developer,0.073,0.093,5,0
+KAGGLE_445,SAP Developer,0.035,0.082,6,0
+KAGGLE_446,SAP Developer,0.05,0.004,7,0
+KAGGLE_447,SAP Developer,0.016,0.082,6,0
+KAGGLE_448,SAP Developer,0.121,0.052,11,0
+KAGGLE_449,SAP Developer,0.087,0.131,7,0
+KAGGLE_450,SAP Developer,0.073,0.041,11,0
+KAGGLE_451,SAP Developer,0.035,0.078,10,0
+KAGGLE_452,SAP Developer,0.05,0.1,8,0
+KAGGLE_453,SAP Developer,0.016,0.0,6,0
+KAGGLE_454,SAP Developer,0.121,0.042,11,0
+KAGGLE_455,SAP Developer,0.087,0.027,7,0
+KAGGLE_456,Automation Testing,0.047,0.137,11,0
+KAGGLE_457,Automation Testing,0.058,0.0,10,0
+KAGGLE_458,Automation Testing,0.098,0.192,9,0
+KAGGLE_459,Automation Testing,0.076,0.11,8,0
+KAGGLE_460,Automation Testing,0.137,0.062,8,0
+KAGGLE_461,Automation Testing,0.028,0.123,10,0
+KAGGLE_462,Automation Testing,0.047,0.144,5,0
+KAGGLE_463,Automation Testing,0.076,0.17,6,0
+KAGGLE_464,Automation Testing,0.137,0.187,9,0
+KAGGLE_465,Automation Testing,0.076,0.0,7,0
+KAGGLE_466,Automation Testing,0.137,0.112,5,0
+KAGGLE_467,Automation Testing,0.076,0.059,5,0
+KAGGLE_468,Automation Testing,0.137,0.095,11,0
+KAGGLE_469,Automation Testing,0.047,0.135,6,0
+KAGGLE_470,Automation Testing,0.058,0.047,5,0
+KAGGLE_471,Automation Testing,0.098,0.177,7,0
+KAGGLE_472,Automation Testing,0.076,0.095,8,0
+KAGGLE_473,Automation Testing,0.137,0.083,9,0
+KAGGLE_474,Automation Testing,0.028,0.12,7,0
+KAGGLE_475,Automation Testing,0.047,0.0,9,0
+KAGGLE_476,Automation Testing,0.076,0.164,10,0
+KAGGLE_477,Automation Testing,0.137,0.038,7,0
+KAGGLE_478,Automation Testing,0.076,0.088,6,0
+KAGGLE_479,Automation Testing,0.137,0.185,6,0
+KAGGLE_480,Automation Testing,0.076,0.129,7,0
+KAGGLE_481,Automation Testing,0.137,0.221,10,0
+KAGGLE_482,Electrical Engineering,0.046,0.058,10,0
+KAGGLE_483,Electrical Engineering,0.0,0.024,7,0
+KAGGLE_484,Electrical Engineering,0.06,0.153,10,0
+KAGGLE_485,Electrical Engineering,0.031,0.006,6,0
+KAGGLE_486,Electrical Engineering,0.084,0.115,8,0
+KAGGLE_487,Electrical Engineering,0.046,0.0,8,0
+KAGGLE_488,Electrical Engineering,0.0,0.009,5,0
+KAGGLE_489,Electrical Engineering,0.06,0.0,6,0
+KAGGLE_490,Electrical Engineering,0.031,0.056,8,0
+KAGGLE_491,Electrical Engineering,0.084,0.0,7,0
+KAGGLE_492,Electrical Engineering,0.046,0.06,11,0
+KAGGLE_493,Electrical Engineering,0.0,0.031,9,0
+KAGGLE_494,Electrical Engineering,0.06,0.029,11,0
+KAGGLE_495,Electrical Engineering,0.031,0.013,11,0
+KAGGLE_496,Electrical Engineering,0.084,0.163,11,0
+KAGGLE_497,Electrical Engineering,0.046,0.021,7,0
+KAGGLE_498,Electrical Engineering,0.0,0.053,9,0
+KAGGLE_499,Electrical Engineering,0.06,0.0,7,0
+KAGGLE_500,Electrical Engineering,0.031,0.0,10,0
+KAGGLE_501,Electrical Engineering,0.084,0.004,10,0
+KAGGLE_502,Electrical Engineering,0.046,0.0,9,0
+KAGGLE_503,Electrical Engineering,0.0,0.021,5,0
+KAGGLE_504,Electrical Engineering,0.06,0.123,7,0
+KAGGLE_505,Electrical Engineering,0.031,0.117,11,0
+KAGGLE_506,Electrical Engineering,0.084,0.17,11,0
+KAGGLE_507,Electrical Engineering,0.046,0.0,9,0
+KAGGLE_508,Electrical Engineering,0.0,0.0,11,0
+KAGGLE_509,Electrical Engineering,0.06,0.152,7,0
+KAGGLE_510,Electrical Engineering,0.031,0.101,11,0
+KAGGLE_511,Electrical Engineering,0.084,0.093,11,0
+KAGGLE_512,Operations Manager,0.048,0.103,7,0
+KAGGLE_513,Operations Manager,0.03,0.069,7,0
+KAGGLE_514,Operations Manager,0.024,0.086,11,0
+KAGGLE_515,Operations Manager,0.022,0.0,6,0
+KAGGLE_516,Operations Manager,0.048,0.105,8,0
+KAGGLE_517,Operations Manager,0.03,0.0,7,0
+KAGGLE_518,Operations Manager,0.024,0.0,11,0
+KAGGLE_519,Operations Manager,0.022,0.0,6,0
+KAGGLE_520,Operations Manager,0.048,0.068,7,0
+KAGGLE_521,Operations Manager,0.03,0.0,9,0
+KAGGLE_522,Operations Manager,0.024,0.002,10,0
+KAGGLE_523,Operations Manager,0.022,0.041,11,0
+KAGGLE_524,Operations Manager,0.048,0.0,11,0
+KAGGLE_525,Operations Manager,0.03,0.0,5,0
+KAGGLE_526,Operations Manager,0.024,0.0,8,0
+KAGGLE_527,Operations Manager,0.022,0.048,8,0
+KAGGLE_528,Operations Manager,0.048,0.12,7,0
+KAGGLE_529,Operations Manager,0.03,0.0,5,0
+KAGGLE_530,Operations Manager,0.024,0.093,10,0
+KAGGLE_531,Operations Manager,0.022,0.0,6,0
+KAGGLE_532,Operations Manager,0.048,0.0,9,0
+KAGGLE_533,Operations Manager,0.03,0.127,5,0
+KAGGLE_534,Operations Manager,0.024,0.0,8,0
+KAGGLE_535,Operations Manager,0.022,0.11,10,0
+KAGGLE_536,Operations Manager,0.048,0.071,6,0
+KAGGLE_537,Operations Manager,0.03,0.005,7,0
+KAGGLE_538,Operations Manager,0.024,0.1,9,0
+KAGGLE_539,Operations Manager,0.022,0.0,10,0
+KAGGLE_540,Operations Manager,0.048,0.023,5,0
+KAGGLE_541,Operations Manager,0.03,0.0,11,0
+KAGGLE_542,Operations Manager,0.024,0.083,9,0
+KAGGLE_543,Operations Manager,0.022,0.083,10,0
+KAGGLE_544,Operations Manager,0.048,0.024,9,0
+KAGGLE_545,Operations Manager,0.03,0.065,7,0
+KAGGLE_546,Operations Manager,0.024,0.0,6,0
+KAGGLE_547,Operations Manager,0.022,0.0,7,0
+KAGGLE_548,Operations Manager,0.048,0.0,5,0
+KAGGLE_549,Operations Manager,0.03,0.0,9,0
+KAGGLE_550,Operations Manager,0.024,0.0,11,0
+KAGGLE_551,Operations Manager,0.022,0.027,6,0
+KAGGLE_552,Python Developer,0.15,0.221,6,0
+KAGGLE_553,Python Developer,0.124,0.185,6,0
+KAGGLE_554,Python Developer,0.305,0.29,9,0
+KAGGLE_555,Python Developer,0.111,0.16,10,0
+KAGGLE_556,Python Developer,0.035,0.094,6,0
+KAGGLE_557,Python Developer,0.256,0.298,8,0
+KAGGLE_558,Python Developer,0.15,0.067,6,0
+KAGGLE_559,Python Developer,0.124,0.193,9,0
+KAGGLE_560,Python Developer,0.305,0.302,6,0
+KAGGLE_561,Python Developer,0.111,0.206,10,0
+KAGGLE_562,Python Developer,0.035,0.052,11,0
+KAGGLE_563,Python Developer,0.256,0.333,5,0
+KAGGLE_564,Python Developer,0.15,0.186,10,0
+KAGGLE_565,Python Developer,0.124,0.065,11,0
+KAGGLE_566,Python Developer,0.305,0.273,6,0
+KAGGLE_567,Python Developer,0.111,0.156,7,0
+KAGGLE_568,Python Developer,0.035,0.094,8,0
+KAGGLE_569,Python Developer,0.256,0.211,9,0
+KAGGLE_570,Python Developer,0.15,0.161,8,0
+KAGGLE_571,Python Developer,0.124,0.059,8,0
+KAGGLE_572,Python Developer,0.305,0.332,5,0
+KAGGLE_573,Python Developer,0.111,0.199,7,0
+KAGGLE_574,Python Developer,0.035,0.0,5,0
+KAGGLE_575,Python Developer,0.256,0.34,6,0
+KAGGLE_576,Python Developer,0.15,0.095,11,0
+KAGGLE_577,Python Developer,0.124,0.112,8,0
+KAGGLE_578,Python Developer,0.305,0.379,7,0
+KAGGLE_579,Python Developer,0.111,0.16,5,0
+KAGGLE_580,Python Developer,0.035,0.083,10,0
+KAGGLE_581,Python Developer,0.256,0.269,11,0
+KAGGLE_582,Python Developer,0.15,0.229,11,0
+KAGGLE_583,Python Developer,0.124,0.165,8,0
+KAGGLE_584,Python Developer,0.305,0.369,7,0
+KAGGLE_585,Python Developer,0.111,0.075,11,0
+KAGGLE_586,Python Developer,0.035,0.024,7,0
+KAGGLE_587,Python Developer,0.256,0.312,10,0
+KAGGLE_588,Python Developer,0.15,0.165,11,0
+KAGGLE_589,Python Developer,0.124,0.03,11,0
+KAGGLE_590,Python Developer,0.305,0.308,5,0
+KAGGLE_591,Python Developer,0.111,0.105,10,0
+KAGGLE_592,Python Developer,0.035,0.0,6,0
+KAGGLE_593,Python Developer,0.256,0.215,7,0
+KAGGLE_594,Python Developer,0.15,0.152,10,0
+KAGGLE_595,Python Developer,0.124,0.048,11,0
+KAGGLE_596,Python Developer,0.305,0.224,10,0
+KAGGLE_597,Python Developer,0.111,0.131,7,0
+KAGGLE_598,Python Developer,0.035,0.079,6,0
+KAGGLE_599,Python Developer,0.256,0.349,9,0
+KAGGLE_600,DevOps Engineer,0.045,0.133,8,0
+KAGGLE_601,DevOps Engineer,0.105,0.192,10,0
+KAGGLE_602,DevOps Engineer,0.038,0.015,5,0
+KAGGLE_603,DevOps Engineer,0.11,0.114,9,0
+KAGGLE_604,DevOps Engineer,0.053,0.042,8,0
+KAGGLE_605,DevOps Engineer,0.053,0.0,8,0
+KAGGLE_606,DevOps Engineer,0.052,0.031,11,0
+KAGGLE_607,DevOps Engineer,0.045,0.042,11,0
+KAGGLE_608,DevOps Engineer,0.105,0.076,9,0
+KAGGLE_609,DevOps Engineer,0.038,0.103,8,0
+KAGGLE_610,DevOps Engineer,0.045,0.134,9,0
+KAGGLE_611,DevOps Engineer,0.105,0.066,8,0
+KAGGLE_612,DevOps Engineer,0.038,0.074,9,0
+KAGGLE_613,DevOps Engineer,0.045,0.126,7,0
+KAGGLE_614,DevOps Engineer,0.105,0.184,9,0
+KAGGLE_615,DevOps Engineer,0.038,0.015,9,0
+KAGGLE_616,DevOps Engineer,0.045,0.04,7,0
+KAGGLE_617,DevOps Engineer,0.105,0.132,6,0
+KAGGLE_618,DevOps Engineer,0.038,0.0,8,0
+KAGGLE_619,DevOps Engineer,0.045,0.08,11,0
+KAGGLE_620,DevOps Engineer,0.105,0.057,11,0
+KAGGLE_621,DevOps Engineer,0.038,0.042,5,0
+KAGGLE_622,DevOps Engineer,0.045,0.0,6,0
+KAGGLE_623,DevOps Engineer,0.105,0.157,9,0
+KAGGLE_624,DevOps Engineer,0.038,0.0,7,0
+KAGGLE_625,DevOps Engineer,0.045,0.0,7,0
+KAGGLE_626,DevOps Engineer,0.105,0.136,9,0
+KAGGLE_627,DevOps Engineer,0.038,0.021,9,0
+KAGGLE_628,DevOps Engineer,0.045,0.055,7,0
+KAGGLE_629,DevOps Engineer,0.105,0.026,11,0
+KAGGLE_630,DevOps Engineer,0.038,0.0,7,0
+KAGGLE_631,DevOps Engineer,0.045,0.107,9,0
+KAGGLE_632,DevOps Engineer,0.105,0.146,11,0
+KAGGLE_633,DevOps Engineer,0.038,0.002,9,0
+KAGGLE_634,DevOps Engineer,0.045,0.063,11,0
+KAGGLE_635,DevOps Engineer,0.105,0.09,6,0
+KAGGLE_636,DevOps Engineer,0.038,0.02,5,0
+KAGGLE_637,DevOps Engineer,0.045,0.0,9,0
+KAGGLE_638,DevOps Engineer,0.105,0.14,10,0
+KAGGLE_639,DevOps Engineer,0.038,0.028,6,0
+KAGGLE_640,DevOps Engineer,0.045,0.0,11,0
+KAGGLE_641,DevOps Engineer,0.105,0.091,7,0
+KAGGLE_642,DevOps Engineer,0.038,0.132,8,0
+KAGGLE_643,DevOps Engineer,0.045,0.062,6,0
+KAGGLE_644,DevOps Engineer,0.105,0.096,7,0
+KAGGLE_645,DevOps Engineer,0.038,0.021,8,0
+KAGGLE_646,DevOps Engineer,0.045,0.0,8,0
+KAGGLE_647,DevOps Engineer,0.105,0.063,10,0
+KAGGLE_648,DevOps Engineer,0.038,0.0,9,0
+KAGGLE_649,DevOps Engineer,0.045,0.135,8,0
+KAGGLE_650,DevOps Engineer,0.105,0.132,7,0
+KAGGLE_651,DevOps Engineer,0.038,0.011,9,0
+KAGGLE_652,DevOps Engineer,0.045,0.127,7,0
+KAGGLE_653,DevOps Engineer,0.105,0.156,6,0
+KAGGLE_654,DevOps Engineer,0.038,0.014,6,0
+KAGGLE_655,Network Security Engineer,0.059,0.154,11,0
+KAGGLE_656,Network Security Engineer,0.021,0.084,10,0
+KAGGLE_657,Network Security Engineer,0.087,0.183,10,0
+KAGGLE_658,Network Security Engineer,0.029,0.0,10,0
+KAGGLE_659,Network Security Engineer,0.003,0.045,9,0
+KAGGLE_660,Network Security Engineer,0.059,0.084,5,0
+KAGGLE_661,Network Security Engineer,0.021,0.06,10,0
+KAGGLE_662,Network Security Engineer,0.087,0.056,9,0
+KAGGLE_663,Network Security Engineer,0.029,0.044,9,0
+KAGGLE_664,Network Security Engineer,0.003,0.02,6,0
+KAGGLE_665,Network Security Engineer,0.059,0.096,9,0
+KAGGLE_666,Network Security Engineer,0.021,0.0,11,0
+KAGGLE_667,Network Security Engineer,0.087,0.041,5,0
+KAGGLE_668,Network Security Engineer,0.029,0.017,10,0
+KAGGLE_669,Network Security Engineer,0.003,0.05,11,0
+KAGGLE_670,Network Security Engineer,0.059,0.136,11,0
+KAGGLE_671,Network Security Engineer,0.021,0.024,9,0
+KAGGLE_672,Network Security Engineer,0.087,0.107,8,0
+KAGGLE_673,Network Security Engineer,0.029,0.012,9,0
+KAGGLE_674,Network Security Engineer,0.003,0.0,6,0
+KAGGLE_675,Network Security Engineer,0.059,0.019,10,0
+KAGGLE_676,Network Security Engineer,0.021,0.0,11,0
+KAGGLE_677,Network Security Engineer,0.087,0.145,10,0
+KAGGLE_678,Network Security Engineer,0.029,0.0,6,0
+KAGGLE_679,Network Security Engineer,0.003,0.0,9,0
+KAGGLE_680,PMO,0.119,0.064,10,0
+KAGGLE_681,PMO,0.075,0.018,10,0
+KAGGLE_682,PMO,0.024,0.018,11,0
+KAGGLE_683,PMO,0.119,0.173,6,0
+KAGGLE_684,PMO,0.075,0.0,6,0
+KAGGLE_685,PMO,0.024,0.107,9,0
+KAGGLE_686,PMO,0.119,0.072,6,0
+KAGGLE_687,PMO,0.075,0.172,11,0
+KAGGLE_688,PMO,0.024,0.047,9,0
+KAGGLE_689,PMO,0.119,0.151,9,0
+KAGGLE_690,PMO,0.075,0.018,10,0
+KAGGLE_691,PMO,0.024,0.081,11,0
+KAGGLE_692,PMO,0.119,0.145,5,0
+KAGGLE_693,PMO,0.075,0.085,6,0
+KAGGLE_694,PMO,0.024,0.119,9,0
+KAGGLE_695,PMO,0.119,0.157,8,0
+KAGGLE_696,PMO,0.075,0.02,8,0
+KAGGLE_697,PMO,0.024,0.113,8,0
+KAGGLE_698,PMO,0.119,0.119,10,0
+KAGGLE_699,PMO,0.075,0.16,8,0
+KAGGLE_700,PMO,0.024,0.0,8,0
+KAGGLE_701,PMO,0.119,0.178,9,0
+KAGGLE_702,PMO,0.075,0.0,9,0
+KAGGLE_703,PMO,0.024,0.0,6,0
+KAGGLE_704,PMO,0.119,0.053,7,0
+KAGGLE_705,PMO,0.075,0.134,7,0
+KAGGLE_706,PMO,0.024,0.052,5,0
+KAGGLE_707,PMO,0.119,0.148,5,0
+KAGGLE_708,PMO,0.075,0.166,8,0
+KAGGLE_709,PMO,0.024,0.011,7,0
+KAGGLE_710,Database,0.109,0.034,10,0
+KAGGLE_711,Database,0.082,0.136,11,0
+KAGGLE_712,Database,0.109,0.04,5,0
+KAGGLE_713,Database,0.046,0.0,6,0
+KAGGLE_714,Database,0.021,0.0,10,0
+KAGGLE_715,Database,0.058,0.06,10,0
+KAGGLE_716,Database,0.067,0.083,11,0
+KAGGLE_717,Database,0.128,0.103,10,0
+KAGGLE_718,Database,0.016,0.096,6,0
+KAGGLE_719,Database,0.03,0.031,8,0
+KAGGLE_720,Database,0.368,0.288,7,0
+KAGGLE_721,Database,0.109,0.039,11,0
+KAGGLE_722,Database,0.082,0.177,10,0
+KAGGLE_723,Database,0.109,0.154,5,0
+KAGGLE_724,Database,0.046,0.039,11,0
+KAGGLE_725,Database,0.021,0.0,10,0
+KAGGLE_726,Database,0.058,0.085,10,0
+KAGGLE_727,Database,0.067,0.032,7,0
+KAGGLE_728,Database,0.128,0.106,11,0
+KAGGLE_729,Database,0.016,0.083,10,0
+KAGGLE_730,Database,0.03,0.0,11,0
+KAGGLE_731,Database,0.368,0.278,5,0
+KAGGLE_732,Database,0.109,0.148,5,0
+KAGGLE_733,Database,0.082,0.057,6,0
+KAGGLE_734,Database,0.109,0.154,5,0
+KAGGLE_735,Database,0.046,0.062,10,0
+KAGGLE_736,Database,0.021,0.099,7,0
+KAGGLE_737,Database,0.058,0.005,10,0
+KAGGLE_738,Database,0.067,0.112,7,0
+KAGGLE_739,Database,0.128,0.058,9,0
+KAGGLE_740,Database,0.016,0.0,8,0
+KAGGLE_741,Database,0.03,0.089,10,0
+KAGGLE_742,Database,0.368,0.33,6,0
+KAGGLE_743,Hadoop,0.418,0.342,6,0
+KAGGLE_744,Hadoop,0.343,0.25,6,0
+KAGGLE_745,Hadoop,0.507,0.473,11,0
+KAGGLE_746,Hadoop,0.362,0.296,5,0
+KAGGLE_747,Hadoop,0.53,0.484,10,0
+KAGGLE_748,Hadoop,0.501,0.528,9,0
+KAGGLE_749,Hadoop,0.358,0.335,7,0
+KAGGLE_750,Hadoop,0.418,0.479,8,0
+KAGGLE_751,Hadoop,0.343,0.309,8,0
+KAGGLE_752,Hadoop,0.507,0.433,5,0
+KAGGLE_753,Hadoop,0.362,0.351,7,0
+KAGGLE_754,Hadoop,0.53,0.606,8,0
+KAGGLE_755,Hadoop,0.501,0.458,5,0
+KAGGLE_756,Hadoop,0.358,0.272,7,0
+KAGGLE_757,Hadoop,0.418,0.358,7,0
+KAGGLE_758,Hadoop,0.343,0.419,5,0
+KAGGLE_759,Hadoop,0.507,0.465,9,0
+KAGGLE_760,Hadoop,0.362,0.314,9,0
+KAGGLE_761,Hadoop,0.53,0.431,11,0
+KAGGLE_762,Hadoop,0.501,0.456,11,0
+KAGGLE_763,Hadoop,0.358,0.376,6,0
+KAGGLE_764,Hadoop,0.418,0.476,7,0
+KAGGLE_765,Hadoop,0.343,0.344,8,0
+KAGGLE_766,Hadoop,0.507,0.473,8,0
+KAGGLE_767,Hadoop,0.362,0.306,5,0
+KAGGLE_768,Hadoop,0.53,0.465,8,0
+KAGGLE_769,Hadoop,0.501,0.48,9,0
+KAGGLE_770,Hadoop,0.358,0.408,8,0
+KAGGLE_771,Hadoop,0.418,0.453,5,0
+KAGGLE_772,Hadoop,0.343,0.409,8,0
+KAGGLE_773,Hadoop,0.507,0.554,8,0
+KAGGLE_774,Hadoop,0.362,0.392,9,0
+KAGGLE_775,Hadoop,0.53,0.617,5,0
+KAGGLE_776,Hadoop,0.501,0.587,8,0
+KAGGLE_777,Hadoop,0.358,0.403,9,0
+KAGGLE_778,Hadoop,0.418,0.494,10,0
+KAGGLE_779,Hadoop,0.343,0.28,6,0
+KAGGLE_780,Hadoop,0.507,0.45,6,0
+KAGGLE_781,Hadoop,0.362,0.432,11,0
+KAGGLE_782,Hadoop,0.53,0.556,5,0
+KAGGLE_783,Hadoop,0.501,0.429,7,0
+KAGGLE_784,Hadoop,0.358,0.447,5,0
+KAGGLE_785,ETL Developer,0.179,0.151,9,0
+KAGGLE_786,ETL Developer,0.093,0.157,7,0
+KAGGLE_787,ETL Developer,0.091,0.0,7,0
+KAGGLE_788,ETL Developer,0.201,0.225,9,0
+KAGGLE_789,ETL Developer,0.137,0.073,8,0
+KAGGLE_790,ETL Developer,0.179,0.096,5,0
+KAGGLE_791,ETL Developer,0.093,0.058,6,0
+KAGGLE_792,ETL Developer,0.091,0.155,11,0
+KAGGLE_793,ETL Developer,0.201,0.174,7,0
+KAGGLE_794,ETL Developer,0.137,0.19,9,0
+KAGGLE_795,ETL Developer,0.179,0.158,5,0
+KAGGLE_796,ETL Developer,0.093,0.084,10,0
+KAGGLE_797,ETL Developer,0.091,0.15,11,0
+KAGGLE_798,ETL Developer,0.201,0.267,10,0
+KAGGLE_799,ETL Developer,0.137,0.122,9,0
+KAGGLE_800,ETL Developer,0.179,0.096,11,0
+KAGGLE_801,ETL Developer,0.093,0.079,7,0
+KAGGLE_802,ETL Developer,0.091,0.053,11,0
+KAGGLE_803,ETL Developer,0.201,0.101,8,0
+KAGGLE_804,ETL Developer,0.137,0.213,8,0
+KAGGLE_805,ETL Developer,0.179,0.227,7,0
+KAGGLE_806,ETL Developer,0.093,0.164,8,0
+KAGGLE_807,ETL Developer,0.091,0.139,9,0
+KAGGLE_808,ETL Developer,0.201,0.228,10,0
+KAGGLE_809,ETL Developer,0.137,0.126,6,0
+KAGGLE_810,ETL Developer,0.179,0.147,7,0
+KAGGLE_811,ETL Developer,0.093,0.058,6,0
+KAGGLE_812,ETL Developer,0.091,0.147,10,0
+KAGGLE_813,ETL Developer,0.201,0.105,7,0
+KAGGLE_814,ETL Developer,0.137,0.13,9,0
+KAGGLE_815,ETL Developer,0.179,0.117,9,0
+KAGGLE_816,ETL Developer,0.093,0.115,9,0
+KAGGLE_817,ETL Developer,0.091,0.157,8,0
+KAGGLE_818,ETL Developer,0.201,0.297,11,0
+KAGGLE_819,ETL Developer,0.137,0.057,9,0
+KAGGLE_820,ETL Developer,0.179,0.246,8,0
+KAGGLE_821,ETL Developer,0.093,0.11,11,0
+KAGGLE_822,ETL Developer,0.091,0.012,8,0
+KAGGLE_823,ETL Developer,0.201,0.161,9,0
+KAGGLE_824,ETL Developer,0.137,0.137,11,0
+KAGGLE_825,DotNet Developer,0.066,0.126,10,0
+KAGGLE_826,DotNet Developer,0.036,0.068,11,0
+KAGGLE_827,DotNet Developer,0.082,0.113,9,0
+KAGGLE_828,DotNet Developer,0.026,0.038,7,0
+KAGGLE_829,DotNet Developer,0.054,0.0,5,0
+KAGGLE_830,DotNet Developer,0.041,0.0,6,0
+KAGGLE_831,DotNet Developer,0.048,0.12,11,0
+KAGGLE_832,DotNet Developer,0.066,0.139,7,0
+KAGGLE_833,DotNet Developer,0.036,0.0,5,0
+KAGGLE_834,DotNet Developer,0.082,0.013,11,0
+KAGGLE_835,DotNet Developer,0.026,0.059,11,0
+KAGGLE_836,DotNet Developer,0.054,0.139,8,0
+KAGGLE_837,DotNet Developer,0.041,0.0,5,0
+KAGGLE_838,DotNet Developer,0.048,0.027,8,0
+KAGGLE_839,DotNet Developer,0.066,0.057,7,0
+KAGGLE_840,DotNet Developer,0.036,0.131,8,0
+KAGGLE_841,DotNet Developer,0.082,0.124,9,0
+KAGGLE_842,DotNet Developer,0.026,0.007,9,0
+KAGGLE_843,DotNet Developer,0.054,0.106,10,0
+KAGGLE_844,DotNet Developer,0.041,0.01,5,0
+KAGGLE_845,DotNet Developer,0.048,0.081,8,0
+KAGGLE_846,DotNet Developer,0.066,0.151,11,0
+KAGGLE_847,DotNet Developer,0.036,0.122,6,0
+KAGGLE_848,DotNet Developer,0.082,0.049,6,0
+KAGGLE_849,DotNet Developer,0.026,0.0,9,0
+KAGGLE_850,DotNet Developer,0.054,0.0,11,0
+KAGGLE_851,DotNet Developer,0.041,0.14,8,0
+KAGGLE_852,DotNet Developer,0.048,0.028,5,0
+KAGGLE_853,Blockchain,0.017,0.085,8,0
+KAGGLE_854,Blockchain,0.043,0.003,10,0
+KAGGLE_855,Blockchain,0.046,0.078,10,0
+KAGGLE_856,Blockchain,0.021,0.0,11,0
+KAGGLE_857,Blockchain,0.141,0.222,10,0
+KAGGLE_858,Blockchain,0.017,0.056,11,0
+KAGGLE_859,Blockchain,0.043,0.012,8,0
+KAGGLE_860,Blockchain,0.046,0.0,7,0
+KAGGLE_861,Blockchain,0.021,0.0,7,0
+KAGGLE_862,Blockchain,0.141,0.052,6,0
+KAGGLE_863,Blockchain,0.017,0.0,6,0
+KAGGLE_864,Blockchain,0.043,0.067,9,0
+KAGGLE_865,Blockchain,0.046,0.092,10,0
+KAGGLE_866,Blockchain,0.021,0.0,6,0
+KAGGLE_867,Blockchain,0.141,0.143,7,0
+KAGGLE_868,Blockchain,0.017,0.078,6,0
+KAGGLE_869,Blockchain,0.043,0.102,5,0
+KAGGLE_870,Blockchain,0.046,0.143,8,0
+KAGGLE_871,Blockchain,0.021,0.093,10,0
+KAGGLE_872,Blockchain,0.141,0.222,9,0
+KAGGLE_873,Blockchain,0.017,0.098,8,0
+KAGGLE_874,Blockchain,0.043,0.0,11,0
+KAGGLE_875,Blockchain,0.046,0.049,6,0
+KAGGLE_876,Blockchain,0.021,0.019,5,0
+KAGGLE_877,Blockchain,0.141,0.182,11,0
+KAGGLE_878,Blockchain,0.017,0.0,6,0
+KAGGLE_879,Blockchain,0.043,0.056,5,0
+KAGGLE_880,Blockchain,0.046,0.1,5,0
+KAGGLE_881,Blockchain,0.021,0.0,10,0
+KAGGLE_882,Blockchain,0.141,0.154,5,0
+KAGGLE_883,Blockchain,0.017,0.103,6,0
+KAGGLE_884,Blockchain,0.043,0.143,10,0
+KAGGLE_885,Blockchain,0.046,0.089,10,0
+KAGGLE_886,Blockchain,0.021,0.0,11,0
+KAGGLE_887,Blockchain,0.141,0.187,11,0
+KAGGLE_888,Blockchain,0.017,0.022,11,0
+KAGGLE_889,Blockchain,0.043,0.075,8,0
+KAGGLE_890,Blockchain,0.046,0.054,5,0
+KAGGLE_891,Blockchain,0.021,0.0,9,0
+KAGGLE_892,Blockchain,0.141,0.121,7,0
+KAGGLE_893,Testing,0.012,0.0,7,0
+KAGGLE_894,Testing,0.0,0.005,10,0
+KAGGLE_895,Testing,0.009,0.0,11,0
+KAGGLE_896,Testing,0.01,0.0,9,0
+KAGGLE_897,Testing,0.022,0.119,9,0
+KAGGLE_898,Testing,0.043,0.081,5,0
+KAGGLE_899,Testing,0.009,0.0,7,0
+KAGGLE_900,Testing,0.012,0.041,5,0
+KAGGLE_901,Testing,0.0,0.0,8,0
+KAGGLE_902,Testing,0.009,0.057,7,0
+KAGGLE_903,Testing,0.01,0.007,5,0
+KAGGLE_904,Testing,0.022,0.107,8,0
+KAGGLE_905,Testing,0.043,0.0,6,0
+KAGGLE_906,Testing,0.009,0.048,5,0
+KAGGLE_907,Testing,0.012,0.014,5,0
+KAGGLE_908,Testing,0.0,0.073,8,0
+KAGGLE_909,Testing,0.009,0.0,8,0
+KAGGLE_910,Testing,0.01,0.0,6,0
+KAGGLE_911,Testing,0.022,0.0,8,0
+KAGGLE_912,Testing,0.043,0.0,7,0
+KAGGLE_913,Testing,0.009,0.0,6,0
+KAGGLE_914,Testing,0.012,0.0,10,0
+KAGGLE_915,Testing,0.0,0.0,9,0
+KAGGLE_916,Testing,0.009,0.062,7,0
+KAGGLE_917,Testing,0.01,0.0,9,0
+KAGGLE_918,Testing,0.022,0.0,10,0
+KAGGLE_919,Testing,0.043,0.124,7,0
+KAGGLE_920,Testing,0.009,0.0,9,0
+KAGGLE_921,Testing,0.012,0.086,7,0
+KAGGLE_922,Testing,0.0,0.059,11,0
+KAGGLE_923,Testing,0.009,0.0,6,0
+KAGGLE_924,Testing,0.01,0.0,7,0
+KAGGLE_925,Testing,0.022,0.038,11,0
+KAGGLE_926,Testing,0.043,0.0,7,0
+KAGGLE_927,Testing,0.009,0.072,11,0
+KAGGLE_928,Testing,0.012,0.0,7,0
+KAGGLE_929,Testing,0.0,0.016,10,0
+KAGGLE_930,Testing,0.009,0.078,9,0
+KAGGLE_931,Testing,0.01,0.0,7,0
+KAGGLE_932,Testing,0.022,0.0,8,0
+KAGGLE_933,Testing,0.043,0.0,8,0
+KAGGLE_934,Testing,0.009,0.105,9,0
+KAGGLE_935,Testing,0.012,0.073,7,0
+KAGGLE_936,Testing,0.0,0.0,6,0
+KAGGLE_937,Testing,0.009,0.0,7,0
+KAGGLE_938,Testing,0.01,0.0,7,0
+KAGGLE_939,Testing,0.022,0.0,7,0
+KAGGLE_940,Testing,0.043,0.021,9,0
+KAGGLE_941,Testing,0.009,0.007,5,0
+KAGGLE_942,Testing,0.012,0.08,5,0
+KAGGLE_943,Testing,0.0,0.093,11,0
+KAGGLE_944,Testing,0.009,0.011,9,0
+KAGGLE_945,Testing,0.01,0.096,8,0
+KAGGLE_946,Testing,0.022,0.051,8,0
+KAGGLE_947,Testing,0.043,0.0,8,0
+KAGGLE_948,Testing,0.009,0.026,9,0
+KAGGLE_949,Testing,0.012,0.027,9,0
+KAGGLE_950,Testing,0.0,0.0,6,0
+KAGGLE_951,Testing,0.009,0.061,7,0
+KAGGLE_952,Testing,0.01,0.0,7,0
+KAGGLE_953,Testing,0.022,0.0,6,0
+KAGGLE_954,Testing,0.043,0.098,7,0
+KAGGLE_955,Testing,0.009,0.0,8,0
+KAGGLE_956,Testing,0.012,0.0,5,0
+KAGGLE_957,Testing,0.0,0.0,9,0
+KAGGLE_958,Testing,0.009,0.0,9,0
+KAGGLE_959,Testing,0.01,0.082,5,0
+KAGGLE_960,Testing,0.022,0.0,8,0
+KAGGLE_961,Testing,0.043,0.014,8,0
+KAGGLE_962,Testing,0.009,0.055,9,0

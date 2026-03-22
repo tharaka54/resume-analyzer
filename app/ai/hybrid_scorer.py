@@ -14,6 +14,7 @@ from dataclasses import dataclass, field
 from app.ai.tfidf_model import compute_tfidf_score
 from app.ai.bert_model import compute_bert_score, get_highly_matched_sentences
 from app.ai.skill_extractor import extract_skills, compute_skill_gap
+from app.ai.rf_predictor import predict_hiring_outcome
 
 TFIDF_WEIGHT = 0.32
 BERT_WEIGHT = 0.48
@@ -30,6 +31,8 @@ class ScoringResult:
     missing_skills: list[str] = field(default_factory=list)
     bert_matched_sentences: list[str] = field(default_factory=list)
     skill_match_pct: float = 0.0
+    ml_prediction: str = ""
+    ml_probability: float = 0.0
 
     def to_dict(self) -> dict:
         return {
@@ -41,6 +44,8 @@ class ScoringResult:
             "missing_skills": self.missing_skills,
             "bert_matched_sentences": self.bert_matched_sentences,
             "skill_match_pct": round(self.skill_match_pct, 2),
+            "ml_prediction": self.ml_prediction,
+            "ml_probability": round(self.ml_probability, 2),
         }
 
 
@@ -64,6 +69,9 @@ def score_resume(job_description: str, resume_text: str, quiz_score: float = 0.0
     skill_match_pct = (len(matched) / len(jd_skills) * 100) if jd_skills else 0.0
 
     bert_matched_sentences = get_highly_matched_sentences(job_description, resume_text, threshold=0.45)
+    
+    # NEW: Machine Learning Prediction!
+    ml_pred, ml_prob = predict_hiring_outcome(tfidf, bert, len(matched))
 
     return ScoringResult(
         quiz_score=quiz_score,
@@ -74,4 +82,6 @@ def score_resume(job_description: str, resume_text: str, quiz_score: float = 0.0
         missing_skills=missing,
         bert_matched_sentences=bert_matched_sentences,
         skill_match_pct=skill_match_pct,
+        ml_prediction=ml_pred,
+        ml_probability=ml_prob,
     )

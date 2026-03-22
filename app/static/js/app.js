@@ -98,6 +98,10 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (route.startsWith("/job/")) {
             const jobId = route.split("/")[2];
             renderJobDetails(jobId);
+        } else if (route.startsWith("/job-quiz/")) {
+            if (!token) return navigateToLogin();
+            const jobId = route.split("/")[2];
+            renderJobQuiz(jobId);
         } else if (route.startsWith("/quiz/")) {
             if (!token) return navigateToLogin();
             const jobId = route.split("/")[2];
@@ -173,28 +177,66 @@ document.addEventListener("DOMContentLoaded", () => {
         mainContent.innerHTML = `
             <h2>Public Job Listings</h2>
             <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Search by job title or company...">
-                <button class="primary-btn" style="width: auto;" id="search-btn">Search</button>
+                <input type="text" id="search-input" placeholder="Search by job title or company..." style="width: 70%; padding: 10px;">
+                <button class="primary-btn" style="width: auto; padding: 10px 20px;" id="search-btn">Search</button>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label>Filter by type: </label>
+                <select id="filter-type" style="padding: 5px; margin-right: 10px;">
+                    <option value="">All</option>
+                    <option value="Full-Time">Full-Time</option>
+                    <option value="Part-Time">Part-Time</option>
+                    <option value="Contract">Contract</option>
+                </select>
+                <button id="reset-filter-btn" style="padding: 5px;">Reset</button>
             </div>
             <div id="job-list" class="job-list">Loading jobs...</div>
         `;
 
         fetch("/jobs/public").then(r => r.json()).then(data => {
             const jobList = document.getElementById("job-list");
-            if (data.jobs && data.jobs.length > 0) {
-                jobList.innerHTML = data.jobs.map(job => `
-                    <div class="job-card" onclick="window.history.pushState(null, '', '/job/${job._id}'); window.dispatchEvent(new Event('popstate'))">
-                        <h3>${job.title}</h3>
-                        <p class="company">${job.company || 'Unknown Company'}</p>
-                        <div class="tags">
-                            <span class="tag">${job.location || 'Remote'}</span>
-                            <span class="tag">${job.job_type || 'Full-Time'}</span>
+            let allJobs = data.jobs || [];
+
+            function renderJobs(jobsToRender) {
+                if (jobsToRender && jobsToRender.length > 0) {
+                    jobList.innerHTML = jobsToRender.map(job => `
+                        <div class="job-card" onclick="window.history.pushState(null, '', '/job/${job._id}'); window.dispatchEvent(new Event('popstate'))">
+                            <h3>${job.title}</h3>
+                            <p class="company">${job.company || 'Unknown Company'}</p>
+                            <div class="tags">
+                                <span class="tag">${job.location || 'Remote'}</span>
+                                <span class="tag">${job.job_type || 'Full-Time'}</span>
+                            </div>
                         </div>
-                    </div>
-                `).join("");
-            } else {
-                jobList.innerHTML = "<p>No jobs available.</p>";
+                    `).join("");
+                } else {
+                    jobList.innerHTML = "<p>No jobs available.</p>";
+                }
             }
+
+            renderJobs(allJobs);
+
+            function handleSearch() {
+                const query = document.getElementById("search-input").value.toLowerCase();
+                const typeFilter = document.getElementById("filter-type").value;
+                const filtered = allJobs.filter(j => {
+                    const matchQuery = (j.title || "").toLowerCase().includes(query) || (j.company || "").toLowerCase().includes(query);
+                    const matchType = typeFilter ? j.job_type === typeFilter : true;
+                    return matchQuery && matchType;
+                });
+                renderJobs(filtered);
+            }
+
+            document.getElementById("search-btn").addEventListener("click", handleSearch);
+            document.getElementById("filter-type").addEventListener("change", handleSearch);
+            document.getElementById("reset-filter-btn").addEventListener("click", () => {
+                document.getElementById("search-input").value = "";
+                document.getElementById("filter-type").value = "";
+                renderJobs(allJobs);
+            });
+            document.getElementById("search-input").addEventListener("keypress", (e) => {
+                if (e.key === "Enter") handleSearch();
+            });
         });
     }
 
@@ -395,7 +437,7 @@ document.addEventListener("DOMContentLoaded", () => {
             mainContent.innerHTML = `
                 <div class="quiz-container">
                     <h2>AI Pre-Screening Quiz</h2>
-                    <div id="quiz-timer" style="font-weight:bold; color:red; margin-bottom: 15px;">Time Left: 05:00</div>
+                    <div id="quiz-timer" style="font-weight:bold; color:red; margin-bottom: 15px;">Time Left: 10:00</div>
                     <form id="quiz-form">
                         ${questionsHTML}
                         <button type="button" id="submit-quiz-btn" class="primary-btn">Submit Quiz</button>
@@ -454,8 +496,8 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 mainContent.innerHTML = `
                     <h2>Quiz Failed ❌</h2>
-                    <p>You scored ${data.score}/${numQuestions}. A score of 7 is required.</p>
-                    <p>Please review the job description and try again in 24 hours.</p>
+                    <p>You scored ${data.score}/${numQuestions}. A score of 12 or above is required.</p>
+                    <p>Please review the job description and try again in 24 hours (max 2 attempts).</p>
                     <button class="back-btn" onclick="window.history.pushState(null, '', '/'); window.dispatchEvent(new Event('popstate'))">Return to Job Listings</button>
                 `;
             }
@@ -527,6 +569,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <p>Applicants: ${job.resume_count}</p>
                         <div style="margin-top: 10px;">
                             <button class="primary-btn" style="width: auto; display: inline-block; margin-right: 10px;" onclick="window.history.pushState(null, '', '/job-applicants/${job._id}'); window.dispatchEvent(new Event('popstate'))">View Applicants</button>
+                            <button class="primary-btn" style="width: auto; display: inline-block; background-color: #17a2b8; margin-right: 10px;" onclick="window.history.pushState(null, '', '/job-quiz/${job._id}'); window.dispatchEvent(new Event('popstate'))">View Quiz</button>
                             <button class="primary-btn" style="width: auto; display: inline-block; background-color: #ffc107; color: black; margin-right: 10px;" onclick="window.editJob('${job._id}')">Edit</button>
                             <button class="primary-btn" style="width: auto; display: inline-block; background-color: #dc3545;" onclick="window.deleteJob('${job._id}')">Delete</button>
                         </div>
@@ -654,6 +697,82 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch(() => {
                 document.getElementById("my-apps-list").innerHTML = "<p>Error loading applications.</p>";
             });
+    }
+
+    async function renderJobQuiz(jobId) {
+        mainContent.innerHTML = `<p>Loading generated quiz...</p>`;
+        try {
+            const res = await fetch(`/quiz/${jobId}/view`, {
+                headers: { "Authorization": `Bearer ${token}` }
+            });
+            
+            const data = await res.json();
+            
+            if (!res.ok) {
+                mainContent.innerHTML = `
+                    <button class="back-btn" onclick="window.history.pushState(null, '', '/dashboard'); window.dispatchEvent(new Event('popstate'))">← Back to Dashboard</button>
+                    <h2>Quiz Generation in Progress</h2>
+                    <p style="color: #666; font-size: 1.1em; padding: 20px 0;">⏳ ${data.error || 'Quiz currently generating.'}</p>
+                    <p>Google Gemini takes ~5 to 10 seconds to read your job description and write 15 custom questions.</p>
+                    <button class="primary-btn" style="width: auto; margin-top: 10px; background-color: #17a2b8;" onclick="loadContent('/job-quiz/${jobId}')">Refresh Page</button>
+                `;
+                return;
+            }
+            
+            let html = `
+                <button class="back-btn" onclick="window.history.pushState(null, '', '/dashboard'); window.dispatchEvent(new Event('popstate'))">← Back to Dashboard</button>
+                <h2>Generated Quiz for Job Overview</h2>
+                <div style="margin-bottom: 20px;">
+                    <p>This is the pre-screening quiz that applicants will see. The system automatically generated it using Gemini based on your job description!</p>
+                    <button id="regen-quiz-btn" class="primary-btn" style="background-color: #ffc107; color: #000; width: auto;">Regenerate Quiz via AI</button>
+                </div>
+            `;
+            
+            if (data.questions && data.questions.length > 0) {
+                html += data.questions.map((q, i) => `
+                    <div style="margin-bottom: 15px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background-color: #fcfcfc;">
+                        <p style="margin-top: 0;"><strong>Q${i+1}: ${q.question}</strong></p>
+                        <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
+                            ${q.options.map((opt, j) => `
+                                <li style="${j === q.correct_index ? 'color: green; font-weight: bold; background-color: #e6ffed; padding: 5px; border-radius: 3px;' : 'padding: 5px;'}">
+                                    ${j === q.correct_index ? '✓' : '○'} ${opt}
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `).join('');
+            } else {
+                html += `<p>No quiz found or still generating. Try again shortly.</p>`;
+            }
+            
+            mainContent.innerHTML = html;
+            
+            document.getElementById("regen-quiz-btn").addEventListener("click", async () => {
+                if (!confirm("Are you sure you want to completely regenerate the quiz? Existing questions will be replaced.")) return;
+                try {
+                    const btn = document.getElementById("regen-quiz-btn");
+                    btn.disabled = true;
+                    btn.textContent = "Regenerating... (Background task started)";
+                    
+                    const res = await fetch(`/quiz/${jobId}/regenerate`, {
+                        method: "POST",
+                        headers: { "Authorization": `Bearer ${token}` }
+                    });
+                    
+                    if (res.ok) {
+                        alert("Quiz regeneration triggered in the background! Please check back in a few moments to see the new questions.");
+                        window.history.pushState(null, '', '/dashboard'); window.dispatchEvent(new Event('popstate'));
+                    } else {
+                        alert("Failed to regenerate.");
+                        btn.disabled = false;
+                        btn.textContent = "Regenerate Quiz via AI";
+                    }
+                } catch(e) { alert("Error connecting to server."); }
+            });
+
+        } catch(e) {
+            mainContent.innerHTML = `<p>Error loading quiz.</p>`;
+        }
     }
 
 
