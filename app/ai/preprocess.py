@@ -18,6 +18,12 @@ for resource in ["stopwords", "punkt", "wordnet", "punkt_tab"]:
 
 _STOP_WORDS = set(stopwords.words("english"))
 _LEMMATIZER = WordNetLemmatizer()
+# Ensure WordNet corpus is loaded in the main thread to prevent LazyCorpusLoader threading issues
+try:
+    _LEMMATIZER.lemmatize("test")
+except Exception:
+    pass
+
 
 # Extra noise patterns common in resumes
 _NOISE_PATTERNS = [

@@ -43,6 +43,8 @@ def create_resume(
         "bert_matched_sentences": [],
         "skill_match_pct": None,
         "llm_explanation": None,
+        "ml_prediction": None,
+        "ml_probability": None,
         "status": "Under Review",  # Candidate tracking status
         "ranked": False,
         "uploaded_at": now,
@@ -101,6 +103,8 @@ def update_resume_scores(
     bert_matched_sentences: list,
     skill_match_pct: float,
     llm_explanation: str,
+    ml_prediction: str,
+    ml_probability: float,
 ) -> bool:
     """Update a resume with AI scores after ranking."""
     try:
@@ -118,6 +122,8 @@ def update_resume_scores(
                     "bert_matched_sentences": bert_matched_sentences,
                     "skill_match_pct": skill_match_pct,
                     "llm_explanation": llm_explanation,
+                    "ml_prediction": ml_prediction,
+                    "ml_probability": ml_probability,
                     "ranked": True,
                     "ranked_at": datetime.now(timezone.utc),
                 }

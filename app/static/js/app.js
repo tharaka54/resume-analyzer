@@ -660,6 +660,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <h3>#${i + 1} - ${r.candidate_name} <span style="font-size:0.8em; color:gray;">(${r.status || 'Under Review'})</span></h3>
                 <p><strong>Hybrid Score:</strong> ${r.hybrid_score}% (Quiz: ${r.quiz_score}% | TFIDF: ${r.tfidf_score}% | BERT: ${r.bert_score}%)</p>
                 <p><strong>Skill Match:</strong> ${r.skill_match_pct}%</p>
+                <p><strong>ML Prediction:</strong> <span style="color: ${r.ml_prediction === 'Selected' ? 'green' : r.ml_prediction === 'Shortlisted' ? '#17a2b8' : 'red'}; font-weight: bold;">${r.ml_prediction || 'Unknown'}</span> (${r.ml_probability ? (r.ml_probability * 100).toFixed(1) : '0.0'}% Confidence)</p>
                 <div style="background:#f8f9fa; padding:10px; border-radius:4px; margin: 10px 0;">
                     <strong>AI Explainer:</strong><br>${r.llm_explanation}
                 </div>
@@ -826,6 +827,9 @@ document.addEventListener("DOMContentLoaded", () => {
                             <p><strong>TF-IDF:</strong> ${data.tfidf_score}%</p>
                             <p><strong>BERT:</strong> ${data.bert_score}%</p>
                             <p><strong>Skill Match:</strong> ${data.skill_match_pct}%</p>
+                            <hr style="margin: 10px 0; border: 0; border-top: 1px solid #ddd;">
+                            <p><strong>ML Prediction:</strong> <span style="color: ${data.ml_prediction === 'Selected' ? 'green' : data.ml_prediction === 'Shortlisted' ? '#17a2b8' : 'red'}; font-weight: bold;">${data.ml_prediction || 'Unknown'}</span></p>
+                            <p><strong>ML Confidence:</strong> ${data.ml_probability ? (data.ml_probability * 100).toFixed(1) : '0.0'}%</p>
                         </div>
                         <div class="job-card" style="margin-bottom:20px;">
                             <h3>Key Findings</h3>

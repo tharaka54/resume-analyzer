@@ -144,6 +144,8 @@ def ws_ranking(ws, job_id: str):
             bert_matched_sentences=result.bert_matched_sentences,
             skill_match_pct=result.skill_match_pct,
             llm_explanation=explanation,
+            ml_prediction=result.ml_prediction,
+            ml_probability=round(result.ml_probability, 2)
         )
 
         resume_result = {

@@ -85,6 +85,8 @@ def run_ranking(job_id):
             bert_matched_sentences=result.bert_matched_sentences,
             skill_match_pct=result.skill_match_pct,
             llm_explanation=explanation,
+            ml_prediction=result.ml_prediction,
+            ml_probability=round(result.ml_probability, 2)
         )
 
         results.append({
@@ -152,6 +154,7 @@ def export_csv(job_id):
         "Rank", "Candidate Name", "Original File",
         "Hybrid Score (%)", "Quiz Score (%)", "TF-IDF Score (%)", "BERT Score (%)",
         "Skill Match (%)", "Matched Skills", "Missing Skills",
+        "ML Prediction", "ML Probability",
         "AI Explanation",
     ])
 
@@ -167,6 +170,8 @@ def export_csv(job_id):
             r.get("skill_match_pct", ""),
             "; ".join(r.get("matched_skills", [])),
             "; ".join(r.get("missing_skills", [])),
+            r.get("ml_prediction", "Unknown"),
+            r.get("ml_probability", 0.0),
             r.get("llm_explanation", ""),
         ])
 
