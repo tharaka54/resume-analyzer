@@ -23,7 +23,6 @@
 9. [Security Model](#security-model)
 10. [Functional Requirements](#functional-requirements)
 11. [Notebooks](#notebooks)
-12. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -62,7 +61,6 @@ HireIQ is a full-stack recruitment tool with **two user roles**:
 | Templating | Jinja2 — Flask serves `app/templates/index.html`; JS in `app/static/js/app.js` |
 | Security | PyMuPDF, 5-layer PDF/input validation (`upload_security.py`, `antivirus.py`, `input_sanitizer.py`) |
 | Rate Limiting | Flask-Limiter (`app/extensions.py`) — per-route IP/user limits |
-| Deploy | Docker Compose (single command) |
 
 ---
 
@@ -370,44 +368,6 @@ Run with:
 ```bash
 cd resume-analyzer && jupyter lab notebooks/
 ```
-
----
-
-## Troubleshooting
-
-### `docker-compose up` fails with MongoDB connection error
-MongoDB may still be starting. Wait for the health check or run:
-```bash
-docker-compose restart api
-```
-
-### BERT model download is slow
-The first run downloads `all-MiniLM-L6-v2` (~80 MB). Subsequent starts use the cached model. Set `TRANSFORMERS_CACHE` in `.env` to a persistent volume.
-
-### Google OAuth `redirect_uri_mismatch`
-The `GOOGLE_REDIRECT_URI` in `.env` must exactly match what's registered in Google Cloud Console → OAuth 2.0 credentials → Authorized redirect URIs.
-
-### `spacy.errors.E050` — Model not found
-```bash
-python -m spacy download en_core_web_md
-# or the smaller model:
-python -m spacy download en_core_web_sm
-```
-
-### WebSocket connection refused
-Ensure `flask-sock` is installed and `FLASK_DEBUG=True` is NOT set in production (use gunicorn with gevent worker instead).
-
-### Gemini API returns empty explanation
-Check `GEMINI_API_KEY` is set correctly in `.env`. The system automatically falls back to a rule-based explanation if the key is missing or the API is unavailable.
-
-### Quiz not available after job creation
-Quiz generation is asynchronous. Wait a few seconds and retry `/quiz/<job_id>/start`. If still unavailable, check `GEMINI_API_KEY` — the quiz pool requires a valid key.
-
-### Random Forest model not found
-If `trained_models/random_forest_v1.pkl` is missing, `rf_predictor.py` gracefully falls back to a weighted formula using TF-IDF, BERT, and skill match count.
-
-### Rate limit errors (429 Too Many Requests)
-This is expected behaviour. The rate limiter (`Flask-Limiter`) enforces per-route limits. Wait for the cooldown or adjust limits in `app/extensions.py` for local testing.
 
 ---
 
