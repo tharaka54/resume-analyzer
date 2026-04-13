@@ -198,8 +198,8 @@ Recruiters can track each candidate through a defined pipeline without leaving t
 ### Backend (Flask)
 ```bash
 # Create virtual environment
-python -m venv venv
-venv\Scripts\activate        # Windows
+py -m venv venv
+.\venv\Scripts\activate        # Windows
 # source venv/bin/activate   # macOS/Linux
 
 # Install dependencies

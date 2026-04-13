@@ -25,6 +25,11 @@ Before running the server, you must generate three external connection keys:
    - Go to [Google AI Studio](https://aistudio.google.com/).
    - Generate a free API key.
 
+3. **VirusTotal API Key (Optional - For Document Security)**
+   - Go to [VirusTotal](https://www.virustotal.com/).
+   - Sign up for a free account and copy your API key.
+   - Required strictly for the backend to run security layer 5 properly (or it can be left blank to skip).
+
 ## 3. Environment Variable Configuration
 The system uses a `.env` file to manage secrets securely. 
 1. Create a file named `.env` in the root `resume-analyzer` directory.
@@ -52,6 +57,9 @@ JWT_REFRESH_EXPIRES_DAYS=30
 # Gemini AI Key
 GEMINI_API_KEY=your-gemini-api-key-here
 
+# VirusTotal API Key (Optional)
+VIRUSTOTAL_API_KEY=your-virustotal-api-key-here
+
 # File Upload Rules
 UPLOAD_FOLDER=uploads
 MAX_CONTENT_LENGTH=5242880
@@ -72,8 +80,8 @@ Ensure your MongoDB server is actively running in the background. If you install
 We highly recommend using a virtual environment to isolate dependencies.
 ```bash
 # Windows
-python -m venv venv
-venv\Scripts\activate
+py -m venv venv
+.\venv\Scripts\activate
 
 # macOS / Linux
 python3 -m venv venv
