@@ -24,42 +24,52 @@ def create_resume(
     """
     Store a newly uploaded and parsed resume.
     Scores are stored as None until ranking is performed.
+    journey_status tracks the applicant's pipeline stage (FR #12 / Task 4.37).
     """
-    db = get_db()
-    now = datetime.now(timezone.utc)
-    doc = {
-        "job_id": job_id,
-        "user_id": user_id,
-        "original_filename": original_filename,
-        "safe_filename": safe_filename,
-        "raw_text": raw_text,
-        "candidate_name": _infer_name(raw_text, original_filename),
-        "quiz_score": None,
-        "tfidf_score": None,
-        "bert_score": None,
-        "hybrid_score": None,
-        "matched_skills": [],
-        "missing_skills": [],
-        "bert_matched_sentences": [],
-        "skill_match_pct": None,
-        "llm_explanation": None,
-        "ml_prediction": None,
-        "ml_probability": None,
-        "status": "Under Review",  # Candidate tracking status
-        "ranked": False,
-        "uploaded_at": now,
-        "ranked_at": None,
-    }
-    result = db.resumes.insert_one(doc)
-    doc["_id"] = str(result.inserted_id)
-    return doc
+    try:
+        db = get_db()
+        now = datetime.now(timezone.utc)
+        doc = {
+            "job_id": job_id,
+            "user_id": user_id,
+            "original_filename": original_filename,
+            "safe_filename": safe_filename,
+            "raw_text": raw_text,
+            "candidate_name": _infer_name(raw_text, original_filename),
+            "quiz_score": None,
+            "tfidf_score": None,
+            "bert_score": None,
+            "hybrid_score": None,
+            "matched_skills": [],
+            "missing_skills": [],
+            "bert_matched_sentences": [],
+            "skill_match_pct": None,
+            "llm_explanation": None,
+            "ml_prediction": None,
+            "ml_probability": None,
+            "status": "Under Review",          # Recruiter decision track
+            "journey_status": "Quiz Passed → CV Uploaded → Under Review",  # FR #12
+            "ranked": False,
+            "uploaded_at": now,
+            "ranked_at": None,
+        }
+        result = db.resumes.insert_one(doc)
+        doc["_id"] = str(result.inserted_id)
+        return doc
+    except Exception as e:
+        print(f"[Resume Model] create_resume error: {e}")
+        raise   # re-raise so the route returns 500, not a silent empty result
 
 
 def get_resumes_by_job(job_id: str) -> list[dict]:
-    """Return all resumes for a job, sorted by hybrid score descending."""
-    db = get_db()
-    cursor = db.resumes.find({"job_id": job_id}).sort("hybrid_score", -1)
-    return [_serialize(r) for r in cursor]
+    """Return all resumes for a job, sorted by hybrid score descending. (NFR #11 — exceptions hidden)"""
+    try:
+        db = get_db()
+        cursor = db.resumes.find({"job_id": job_id}).sort("hybrid_score", -1)
+        return [_serialize(r) for r in cursor]
+    except Exception as e:
+        print(f"[Resume Model] get_resumes_by_job error: {e}")
+        return []
 
 
 def get_resumes_by_user(user_id: str) -> list[dict]:

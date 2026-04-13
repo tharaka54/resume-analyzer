@@ -4,20 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HireIQ</title>
+    <meta name="description" content="HireIQ — AI-Powered Recruitment Platform. Smart resume screening, AI quizzes, and intelligent candidate ranking.">
+    <title>HireIQ — AI Recruitment Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="/static/img/logo.png" type="image/png">
 </head>
 
 <body>
     <div id="app">
-        <!-- We will build our vanilla JS app here -->
         <header>
-            <div style="display: flex; align-items: center; gap: 15px; cursor: pointer;" onclick="window.history.pushState(null, '', '/'); window.dispatchEvent(new Event('popstate'))">
-                <img src="/static/img/logo.png" alt="HireIQ Logo" style="height: 40px; border-radius: 8px;">
+            <div class="logo-area" onclick="window.history.pushState(null, '', '/'); window.dispatchEvent(new Event('popstate'))">
+                <img src="/static/img/logo.png" alt="HireIQ Logo">
                 <h1>HireIQ</h1>
             </div>
             <nav id="nav-links">
-                <a href="/">Jobs</a>
+                <a href="/" data-link>Jobs</a>
                 <button id="login-btn">Login with Google</button>
             </nav>
         </header>
@@ -25,6 +29,7 @@
             <h2>Welcome to HireIQ</h2>
             <p>Loading...</p>
         </main>
+        <div id="toast-container" class="toast-container"></div>
     </div>
     <script src="/static/js/app.js"></script>
 </body>

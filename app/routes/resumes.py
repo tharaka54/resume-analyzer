@@ -3,11 +3,13 @@ app/routes/resumes.py — Resume Upload & Retrieval API
 Blueprint: /resumes
 All routes require JWT authentication.
 
-4-Layer Security Pipeline (all in app/security/upload_security.py):
-  Layer 1 : validate_upload      — extension, MIME, size
+Security Pipeline:
+  Layer 1 : validate_upload       — extension, MIME, size
   Layer 2a: verify_pdf_magic_bytes — binary PDF header check
-  Layer 2b: inspect_pdf          — PyMuPDF deep scan + text extraction
-  Layer 3 : sanitize_filename    — UUID rename + path traversal guard
+  Layer 2b: inspect_pdf           — PyMuPDF deep scan + text extraction
+  Layer 3 : sanitize_filename     — UUID rename + path traversal guard
+  Layer 4 : input_sanitizer       — HTML strip + NoSQL injection guard
+  Layer 5 : antivirus             — entropy heuristic + VirusTotal API
 """
 
 import os
@@ -26,12 +28,16 @@ from app.security.upload_security import (
     inspect_pdf, PDFInspectionError,
     sanitize_filename, get_safe_filepath,
 )
+from app.security.antivirus import scan_file_for_malware, AntivirusError
+from app.security.input_sanitizer import sanitize_status_payload, NoSQLInjectionError, InputSanitizationError
+from app.extensions import limiter
 
 resumes_bp = Blueprint("resumes", __name__)
 
 
 @resumes_bp.route("/<job_id>/upload", methods=["POST"])
 @require_auth
+@limiter.limit("20 per hour")           # NFR #9 — prevents spam; allows retries on error
 def upload(job_id):
     """
     POST /resumes/<job_id>/upload
@@ -72,6 +78,12 @@ def upload(job_id):
     except PDFInspectionError as e:
         return jsonify({"error": str(e), "layer": "Layer 2b: PDF Inspector"}), 400
 
+    # ── Layer 5: Antivirus / VirusTotal Scan ──────────────────────────────────
+    try:
+        scan_file_for_malware(file_bytes)
+    except AntivirusError as e:
+        return jsonify({"error": str(e), "layer": "Layer 5: Antivirus"}), 400
+
     # ── Layer 3: Filename Sanitization ────────────────────────────────────────
     original_filename = file.filename
     safe_filename = sanitize_filename(original_filename)
@@ -104,15 +116,26 @@ def upload(job_id):
 @resumes_bp.route("/my-applications", methods=["GET"])
 @require_auth
 def my_applications():
-    """GET /resumes/my-applications - Candidate dashboard view"""
+    """
+    GET /resumes/my-applications — Candidate dashboard (FR #12).
+
+    Returns all applications with two status fields:
+      - journey_status  : applicant's pipeline stage (FR #12 / Task 4.37)
+                          "Quiz Passed, CV Uploaded, Under Review"
+      - status          : recruiter's decision ("Shortlisted", "Selected", "Rejected", etc.)
+    """
     resumes = get_resumes_by_user(g.user_id)
-    # Enhance with job details
     for r in resumes:
         r.pop("raw_text", None)
         job = get_job_by_id_public(r.get("job_id"))
         if job:
             r["job_title"] = job.get("title")
             r["company"] = job.get("company")
+        # ── FIX-05: Build human-readable journey_status (FR #12 / Task 4.37) ──
+        # journey_status stored on the document (set at create time).
+        # Fall back to a computed label if the field pre-dates this fix.
+        if not r.get("journey_status"):
+            r["journey_status"] = "Quiz Passed → CV Uploaded → Under Review"
     return jsonify(resumes), 200
 
 
@@ -120,8 +143,14 @@ def my_applications():
 @require_auth
 def update_status(resume_id):
     """PUT /resumes/detail/<resume_id>/status - Recruiter updates status"""
-    data = request.get_json()
-    new_status = data.get("status")
+    data = request.get_json() or {}
+
+    # ── Layer 4: Sanitize status input + NoSQL guard ───────────────────────
+    try:
+        new_status = sanitize_status_payload(data)
+    except (NoSQLInjectionError, InputSanitizationError) as e:
+        return jsonify({"error": str(e), "layer": "Input Security"}), 400
+
     if new_status not in ["Under Review", "Shortlisted", "Selected", "Rejected"]:
         return jsonify({"error": "Invalid status"}), 400
 

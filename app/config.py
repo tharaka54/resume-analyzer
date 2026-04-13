@@ -1,5 +1,15 @@
 """
 app/config.py — Configuration loaded from .env
+
+Includes settings for:
+  - Flask core
+  - MongoDB
+  - Google OAuth
+  - JWT
+  - File Upload Security
+  - Antivirus / VirusTotal
+  - HTTPS Enforcement
+  - Security Headers (Flask-Talisman)
 """
 
 import os
@@ -42,3 +52,15 @@ class Config:
 
     # Redis
     REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+
+    # ── Security ──────────────────────────────────────────────────────────────
+    # VirusTotal API key — leave blank to disable cloud AV scan (Stage B)
+    VIRUSTOTAL_API_KEY = os.getenv("VIRUSTOTAL_API_KEY", "")
+
+    # Set to True in production to enforce HTTPS via Talisman
+    FORCE_HTTPS = os.getenv("FORCE_HTTPS", "False").lower() == "true"
+
+    # Session cookie hardening
+    SESSION_COOKIE_SECURE   = os.getenv("FORCE_HTTPS", "False").lower() == "true"
+    SESSION_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SAMESITE = "Lax"

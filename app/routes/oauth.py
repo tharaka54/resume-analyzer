@@ -11,6 +11,7 @@ from urllib.parse import urlencode
 
 from app.models.user import upsert_user
 from app.utils.jwt_helper import generate_access_token, generate_refresh_token
+from app.extensions import limiter
 
 oauth_bp = Blueprint("oauth", __name__)
 
@@ -20,11 +21,13 @@ GOOGLE_USERINFO_URL = "https://www.googleapis.com/oauth2/v3/userinfo"
 
 
 @oauth_bp.route("/login")
+@limiter.limit("3 per minute")          # NFR #9 — brute-force protection
 def login():
     """
     GET /auth/login
     Redirects the user to Google's OAuth consent screen.
     Generates a CSRF state token stored in session.
+    Rate-limited to 3 per minute per IP (NFR #9).
     """
     state = secrets.token_urlsafe(32)
     session["oauth_state"] = state
@@ -42,12 +45,14 @@ def login():
 
 
 @oauth_bp.route("/callback")
+@limiter.limit("3 per minute")          # NFR #9 — same cap as /login
 def callback():
     """
     GET /auth/callback
     Google redirects here with ?code=... after user approves.
-    Exchanges the code for tokens, fetches user info, upserts DB record,
+    Exchanges code for tokens, fetches user info, upserts DB record,
     and returns JWT tokens to the frontend.
+    Rate-limited to 3 per minute per IP (NFR #9).
     """
     # CSRF state validation
     state = request.args.get("state", "")
@@ -122,11 +127,13 @@ def callback():
 
 
 @oauth_bp.route("/refresh", methods=["POST"])
+@limiter.limit("5 per minute")          # NFR #9 — prevent token farming
 def refresh():
     """
     POST /auth/refresh
     Body: { "refresh_token": "..." }
     Returns a new access token using a valid refresh token.
+    Rate-limited to 5 per minute per IP (NFR #9).
     """
     data = request.get_json() or {}
     refresh_token = data.get("refresh_token", "")
@@ -147,6 +154,7 @@ def refresh():
 
 
 @oauth_bp.route("/me")
+@limiter.limit("30 per minute")         # loose cap — prevents scraping
 def me():
     """
     GET /auth/me

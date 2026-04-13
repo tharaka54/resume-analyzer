@@ -5,14 +5,53 @@ Blueprint: /ranking
 
 import csv
 import io
+from functools import wraps
 from flask import Blueprint, request, jsonify, g, Response
 from app.middleware.auth_middleware import require_auth
 from app.models.job import get_job_by_id
 from app.models.resume import get_resumes_by_job, update_resume_scores
 from app.ai.hybrid_scorer import score_resume
 from app.ai.llm_explainer import generate_explanation
+from app.utils.jwt_helper import decode_token
+import jwt
 
 ranking_bp = Blueprint("ranking", __name__)
+
+
+def _require_auth_or_token(f):
+    """
+    Auth decorator that accepts a JWT via:
+      1. Authorization: Bearer <token>  header  (API / fetch calls)
+      2. ?token=<token>                  query   (browser file downloads / <a href> clicks)
+
+    Browser-initiated file downloads cannot set custom headers, so the
+    frontend passes the access token as a query param instead.
+    """
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        # 1. Try Authorization header first
+        auth_header = request.headers.get("Authorization", "")
+        if auth_header.startswith("Bearer "):
+            token = auth_header.split(" ", 1)[1]
+        else:
+            # 2. Fall back to ?token= query parameter (for browser downloads)
+            token = request.args.get("token", "")
+
+        if not token:
+            return jsonify({"error": "Authentication required. Pass a Bearer token or ?token= query param."}), 401
+
+        try:
+            payload = decode_token(token)
+            if payload.get("type") != "access":
+                return jsonify({"error": "Invalid token type — use access token"}), 401
+            g.user_id = payload["sub"]
+        except jwt.ExpiredSignatureError:
+            return jsonify({"error": "Token expired — please log in again"}), 401
+        except jwt.InvalidTokenError as e:
+            return jsonify({"error": f"Invalid token: {str(e)}"}), 401
+
+        return f(*args, **kwargs)
+    return decorated
 
 
 @ranking_bp.route("/<job_id>", methods=["POST"])
@@ -22,20 +61,29 @@ def run_ranking(job_id):
     POST /ranking/<job_id>
     Trigger AI scoring for all unranked resumes in a job.
 
-    Scoring pipeline per resume:
-      1. TF-IDF keyword match score
-      2. BERT semantic similarity score
-      3. Hybrid score = 40% TF-IDF + 60% BERT
-      4. Skill gap analysis
-      5. Claude LLM explanation
+    Hybrid scoring formula (Gantt task 4.29):
+      Final Score = Quiz (20%) + TF-IDF (32%) + BERT (48%)
 
-    Returns ranked list sorted by hybrid score.
+    Per resume pipeline:
+      1. Quiz score lookup (from quiz_attempts collection)
+      2. TF-IDF keyword match score
+      3. BERT semantic similarity score
+      4. Hybrid score = 20% quiz + 32% TF-IDF + 48% BERT
+      5. spaCy NER skill gap analysis (matched + missing skills)
+      6. Random Forest ML hiring prediction (supplementary, not in ranking formula)
+      7. Gemini LLM plain-English explanation
+
+    Returns ranked list sorted by hybrid score descending.
     """
     job = get_job_by_id(job_id, g.user_id)
     if not job:
         return jsonify({"error": "Job not found"}), 404
 
-    resumes = get_resumes_by_job(job_id)
+    try:
+        resumes = get_resumes_by_job(job_id)
+    except Exception:
+        return jsonify({"error": "Failed to retrieve resumes. Please try again."}), 500
+
     if not resumes:
         return jsonify({"error": "No resumes uploaded for this job"}), 400
 
@@ -119,7 +167,11 @@ def get_results(job_id):
     if not job:
         return jsonify({"error": "Job not found"}), 404
 
-    resumes = get_resumes_by_job(job_id)
+    try:
+        resumes = get_resumes_by_job(job_id)
+    except Exception:
+        return jsonify({"error": "Failed to retrieve results. Please try again."}), 500
+
     ranked = [r for r in resumes if r.get("ranked")]
     # Strip raw text for smaller response
     for r in ranked:
@@ -130,11 +182,16 @@ def get_results(job_id):
 
 
 @ranking_bp.route("/<job_id>/export/csv", methods=["GET"])
-@require_auth
+@_require_auth_or_token          # supports both header (API) and ?token= (browser download)
 def export_csv(job_id):
     """
     GET /ranking/<job_id>/export/csv
     Export ranking results as a downloadable CSV file.
+
+    Authentication:
+      - API clients:   Authorization: Bearer <token>  header
+      - Browser links: ?token=<access_token>           query param
+        (browsers cannot send custom headers on direct navigation / <a href> clicks)
     """
     job = get_job_by_id(job_id, g.user_id)
     if not job:

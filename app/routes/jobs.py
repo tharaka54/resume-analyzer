@@ -7,6 +7,10 @@ All routes require JWT authentication.
 from flask import Blueprint, request, jsonify, g
 from app.middleware.auth_middleware import require_auth
 from app.models.job import create_job, get_jobs_by_user, get_job_by_id, update_job, delete_job, get_all_public_jobs, get_job_by_id_public
+from app.security.input_sanitizer import (
+    sanitize_job_payload, NoSQLInjectionError, InputSanitizationError
+)
+from app.extensions import limiter
 
 jobs_bp = Blueprint("jobs", __name__)
 
@@ -28,12 +32,22 @@ def get_public_job(job_id):
 
 @jobs_bp.route("/", methods=["POST"])
 @require_auth
+@limiter.limit("10 per hour")           # NFR #9 — prevent spam job postings
 def create():
     """
     POST /jobs/
     Create a new job posting.
     """
     data = request.get_json() or {}
+
+    # ── Sanitize + NoSQL injection guard ─────────────────────────────────
+    try:
+        data = sanitize_job_payload(data)
+    except NoSQLInjectionError as e:
+        return jsonify({"error": str(e), "layer": "Input Security: NoSQL Guard"}), 400
+    except InputSanitizationError as e:
+        return jsonify({"error": str(e), "layer": "Input Security: Sanitizer"}), 400
+
     title = data.get("title", "").strip()
     description = data.get("description", "").strip()
     company = data.get("company", "").strip()
@@ -93,6 +107,15 @@ def update(job_id):
     Update job attributes.
     """
     data = request.get_json() or {}
+
+    # ── Sanitize + NoSQL injection guard ─────────────────────────────────
+    try:
+        data = sanitize_job_payload(data)
+    except NoSQLInjectionError as e:
+        return jsonify({"error": str(e), "layer": "Input Security: NoSQL Guard"}), 400
+    except InputSanitizationError as e:
+        return jsonify({"error": str(e), "layer": "Input Security: Sanitizer"}), 400
+
     updates = {}
 
     for field in ["title", "company", "location", "job_type", "required_skills"]:

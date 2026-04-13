@@ -1,4 +1,4 @@
-﻿amqp==5.3.1
+amqp==5.3.1
 annotated-doc==0.0.4
 annotated-types==0.7.0
 anthropic==0.31.2
@@ -31,6 +31,8 @@ Flask==3.0.3
 Flask-Cors==4.0.1
 Flask-Limiter==4.1.1
 flask-sock==0.7.0
+flask-talisman==1.1.0
+virustotal-python==1.1.1
 fsspec==2026.2.0
 google-ai-generativelanguage==0.6.10
 google-api-core==2.30.0

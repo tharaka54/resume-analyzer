@@ -12,9 +12,19 @@ All four upload security layers merged into a single module:
 import os
 import re
 import uuid
-import fitz  # PyMuPDF
+import fitz           # PyMuPDF
 from flask import Request
 from werkzeug.datastructures import FileStorage
+
+# python-magic reads actual file bytes for MIME detection (FIX-07 / Tools table compliance)
+# python-magic-bin ships the libmagic DLL for Windows.
+# Wrapped in try/except so a missing DLL doesn't crash the server — Layer 1b falls back to
+# the Content-Type header check in that case (same behaviour as pre-FIX-07).
+try:
+    import magic as _magic
+    _MAGIC_AVAILABLE = True
+except (ImportError, OSError):
+    _MAGIC_AVAILABLE = False
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -33,7 +43,12 @@ class FileValidationError(Exception):
 
 def validate_upload(file: FileStorage) -> None:
     """
-    Layer 1: Validate extension, MIME content-type header, and file size.
+    Layer 1: Validate extension, MIME type (via python-magic), and file size.
+
+    Uses python-magic to read the actual file content bytes for MIME detection
+    rather than trusting the browser-supplied Content-Type header.
+    This prevents bypasses such as: rename malware.exe → resume.pdf and
+    set Content-Type: application/pdf in the request.
 
     Args:
         file: Werkzeug FileStorage object from Flask request.files.
@@ -51,11 +66,32 @@ def validate_upload(file: FileStorage) -> None:
             f"File type '.{ext}' is not allowed. Only PDF files are accepted."
         )
 
-    # 1b. MIME type check (header-provided; further verified by magic bytes below)
-    if file.content_type and file.content_type not in ALLOWED_MIME_TYPES:
-        raise FileValidationError(
-            f"Invalid MIME type '{file.content_type}'. Expected 'application/pdf'."
-        )
+    # 1b. MIME type via python-magic (reads actual bytes, not browser header)
+    #     This is more secure than trusting file.content_type which is caller-supplied.
+    if _MAGIC_AVAILABLE:
+        try:
+            header_sample = file.stream.read(1024)   # Read first 1 KB for magic detection
+            file.stream.seek(0)                       # Reset stream for subsequent reads
+            detected_mime = _magic.from_buffer(header_sample, mime=True)
+            if detected_mime not in ALLOWED_MIME_TYPES:
+                raise FileValidationError(
+                    f"File content detected as '{detected_mime}' — expected 'application/pdf'. "
+                    f"The file content does not match its extension."
+                )
+        except FileValidationError:
+            raise
+        except Exception:
+            # Magic check failed unexpectedly — fall back to header check below
+            if file.content_type and file.content_type not in ALLOWED_MIME_TYPES:
+                raise FileValidationError(
+                    f"Invalid MIME type '{file.content_type}'. Expected 'application/pdf'."
+                )
+    else:
+        # Fallback: trust Content-Type header (libmagic DLL unavailable on this system)
+        if file.content_type and file.content_type not in ALLOWED_MIME_TYPES:
+            raise FileValidationError(
+                f"Invalid MIME type '{file.content_type}'. Expected 'application/pdf'."
+            )
 
     # 1c. File size check
     file.stream.seek(0, 2)          # Seek to end
