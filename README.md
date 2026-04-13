@@ -16,14 +16,14 @@
 3. [AI Scoring Pipeline](#ai-scoring-pipeline)
 4. [Quiz System](#quiz-system)
 5. [Candidate Application Tracking](#candidate-application-tracking)
-6. [Quick Start (Docker)](#quick-start-docker)
-7. [Local Development](#local-development)
-8. [API Reference](#api-reference)
-9. [Environment Variables](#environment-variables)
-10. [Security Model](#security-model)
-11. [Functional Requirements](#functional-requirements)
-12. [Notebooks](#notebooks)
-13. [Troubleshooting](#troubleshooting)
+
+6. [Local Development](#local-development)
+7. [API Reference](#api-reference)
+8. [Environment Variables](#environment-variables)
+9. [Security Model](#security-model)
+10. [Functional Requirements](#functional-requirements)
+11. [Notebooks](#notebooks)
+12. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -193,49 +193,7 @@ Recruiters can track each candidate through a defined pipeline without leaving t
 - Candidates see their current status in real time at `GET /resumes/my-applications`
 - Each application also exposes a `journey_status` field showing the candidate's pipeline stage (e.g. "Quiz Passed → CV Uploaded → Under Review")
 
----
 
-## Quick Start (Docker)
-
-### Prerequisites
-- Docker Desktop installed and running
-- Google OAuth credentials (from Google Cloud Console)
-- Google Gemini API key — *free tier at [aistudio.google.com](https://aistudio.google.com)*
-
-### 1. Configure environment
-```bash
-cp .env .env.local
-# Edit with your actual credentials:
-nano .env
-```
-
-Required values:
-```env
-GOOGLE_CLIENT_ID=your-google-client-id
-GOOGLE_CLIENT_SECRET=your-google-client-secret
-GOOGLE_REDIRECT_URI=http://localhost:5000/auth/callback
-GEMINI_API_KEY=your-gemini-api-key
-FLASK_SECRET_KEY=change-this-random-string-32-chars
-JWT_SECRET_KEY=another-random-32-char-string
-MONGO_URI=mongodb://mongo:27017/hireiq
-```
-
-### 2. Start everything
-```bash
-docker-compose up --build
-```
-
-Wait ~2–3 minutes for models to download (BERT: ~80 MB, spaCy: ~40 MB).
-
-### 3. Access the app
-
-| Service | URL |
-|---------|-----|
-| App (Frontend + API) | http://localhost:5000 |
-| Health Check | http://localhost:5000/health |
-| MongoDB | localhost:27017 |
-
----
 
 ## Local Development
 
