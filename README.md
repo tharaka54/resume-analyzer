@@ -373,7 +373,7 @@ cd resume-analyzer && jupyter lab notebooks/
 
 ## License
 
-CSG3101 Applied Project — Academic Use Only
+Academic Use Only
 
 ---
 
