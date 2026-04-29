@@ -68,15 +68,15 @@ HireIQ is a full-stack recruitment tool with **two user roles**:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│            Vanilla HTML/JS SPA  (Flask serves index.html)            │
+│            Vanilla HTML/JS SPA  (Flask serves index.html)           │
 │  app/templates/index.html  +  app/static/js/app.js                  │
-│                                                                      │
-│  Routes (client-side, History API):                                  │
-│   /                 → Public job listings                            │
-│   /job/<id>         → Job details + Apply button                     │
-│   /quiz/<id>        → AI pre-screening quiz (10 min timer)           │
+│                                                                     │
+│  Routes (client-side, History API):                                 │
+│   /                 → Public job listings                           │
+│   /job/<id>         → Job details + Apply button                    │
+│   /quiz/<id>        → AI pre-screening quiz (10 min timer)          │
 │   /upload-cv/<id>   → PDF upload form                               │
-│   /dashboard        → Recruiter job management                       │
+│   /dashboard        → Recruiter job management                      │
 │   /job-applicants/<id> → Ranked applicants + status controls        │
 │   /resume-view/<id> → Highlighted CV viewer + score panel           │
 │   /my-applications  → Candidate application status tracker          │
@@ -85,25 +85,25 @@ HireIQ is a full-stack recruitment tool with **two user roles**:
 └───────────────────────────┬─────────────────────────────────────────┘
                              │ REST + WebSocket (JWT)
 ┌───────────────────────────▼─────────────────────────────────────────┐
-│                     Flask API  (Python 3.11)                         │
-│                                                                      │
+│                     Flask API  (Python 3.11)                        │
+│                                                                     │
 │  /auth/*    Google OAuth 2.0 + JWT tokens                           │
-│  /jobs/*    CRUD job postings                                        │
+│  /jobs/*    CRUD job postings                                       │
 │  /resumes/* PDF upload (5-layer security) + tracking + my-apps      │
 │  /ranking/* AI scoring + CSV export                                 │
 │  /quiz/*    AI quiz generation, session, grading                    │
 │  /ws/ranking/<job_id>   WebSocket live progress                     │
 └──────────┬──────────────────────────────────┬───────────────────────┘
-           │                                  │
-    ┌──────▼──────┐                  ┌────────▼──────────────────────┐
-    │  MongoDB 7  │                  │         AI Engine              │
-    │  users      │                  │  TF-IDF    (32% of score)     │
-    │  jobs       │                  │  BERT      (48% of score)     │
-    │  resumes    │                  │  Quiz      (20% of score)     │
-    │  quiz_pool  │                  │  spaCy skills extraction      │
-    │  quiz_sessions│                │  Random Forest hiring pred.   │
-    │  quiz_attempts│                │  Gemini 2.5 Flash explanation │
-    └─────────────┘                  └───────────────────────────────┘
+           │                                   │
+    ┌──────▼────────┐                  ┌────────▼──────────────────────┐
+    │  MongoDB 7    │                  │         AI Engine             │
+    │  users        │                  │  TF-IDF    (32% of score)     │
+    │  jobs         │                  │  BERT      (48% of score)     │
+    │  resumes      │                  │  Quiz      (20% of score)     │
+    │  quiz_pool    │                  │  spaCy skills extraction      │
+    │  quiz_sessions│                  │  Random Forest hiring pred.   │
+    │  quiz_attempts│                  │  Gemini 2.5 Flash explanation │
+    └───────────────┘                  └───────────────────────────────┘
 ```
 
 ---
