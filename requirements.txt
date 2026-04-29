@@ -32,7 +32,7 @@ Flask-Cors==4.0.1
 Flask-Limiter==4.1.1
 flask-sock==0.7.0
 flask-talisman==1.1.0
-virustotal-python==1.1.1
+virustotal-python==1.0.2
 fsspec==2026.2.0
 google-ai-generativelanguage==0.6.10
 google-api-core==2.30.0
