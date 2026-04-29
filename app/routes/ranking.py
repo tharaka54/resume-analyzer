@@ -102,6 +102,25 @@ def run_ranking(job_id):
         if not raw_text:
             continue
 
+        if resume.get("ranked"):
+            results.append({
+                "resume_id": resume_id,
+                "candidate_name": candidate_name,
+                "original_filename": resume.get("original_filename"),
+                "quiz_score": resume.get("quiz_score", 0) / 100.0, # Adjusting if it was stored as 100 scale but might need normal scale?
+                "tfidf_score": resume.get("tfidf_score", 0),
+                "bert_score": resume.get("bert_score", 0),
+                "hybrid_score": resume.get("hybrid_score", 0),
+                "matched_skills": resume.get("matched_skills", []),
+                "missing_skills": resume.get("missing_skills", []),
+                "bert_matched_sentences": resume.get("bert_matched_sentences", []),
+                "skill_match_pct": resume.get("skill_match_pct", 0),
+                "ml_prediction": resume.get("ml_prediction", "Unknown"),
+                "ml_probability": resume.get("ml_probability", 0.0),
+                "llm_explanation": resume.get("llm_explanation", "")
+            })
+            continue
+
         # Fetch quiz score for this user/job
         attempts = get_recent_attempts(job_id, user_id)
         best_score = max([a["score"] for a in attempts]) if attempts else 0

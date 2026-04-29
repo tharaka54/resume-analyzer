@@ -177,8 +177,8 @@ document.addEventListener("DOMContentLoaded", () => {
         mainContent.innerHTML = `
             <h2>Public Job Listings</h2>
             <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Search by job title or company..." style="width: 70%; padding: 10px;">
-                <button class="primary-btn" style="width: auto; padding: 10px 20px;" id="search-btn">Search</button>
+                <input type="text" id="search-input" placeholder="Search by job title or company...">
+                <button class="primary-btn" id="search-btn">Search</button>
             </div>
             <div style="margin-bottom: 20px;">
                 <label>Filter by type: </label>

@@ -99,6 +99,27 @@ def ws_ranking(ws, job_id: str):
             })
             continue
 
+        if resume.get("ranked"):
+            resume_result = {
+                "resume_id": resume_id,
+                "candidate_name": candidate_name,
+                "original_filename": resume.get("original_filename"),
+                "quiz_score": resume.get("quiz_score", 0) / 100.0,
+                "tfidf_score": resume.get("tfidf_score", 0),
+                "bert_score": resume.get("bert_score", 0),
+                "hybrid_score": resume.get("hybrid_score", 0),
+                "matched_skills": resume.get("matched_skills", []),
+                "missing_skills": resume.get("missing_skills", []),
+                "bert_matched_sentences": resume.get("bert_matched_sentences", []),
+                "skill_match_pct": resume.get("skill_match_pct", 0),
+                "ml_prediction": resume.get("ml_prediction", "Unknown"),
+                "ml_probability": resume.get("ml_probability", 0.0),
+                "llm_explanation": resume.get("llm_explanation", "")
+            }
+            ranked_results.append(resume_result)
+            _send(ws, "result", {"resume": resume_result, "index": index, "total": total})
+            continue
+
         # Notify frontend which resume is being processed
         _send(ws, "progress", {
             "index": index,
