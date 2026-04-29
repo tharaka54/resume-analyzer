@@ -3,7 +3,7 @@ services:
     name: resume-analyzer
     env: python
     buildCommand: "pip install -r requirements.txt && python -m spacy download en_core_web_md"
-    startCommand: "gunicorn --worker-class gthread --workers 1 --threads 100 run:app"
+    startCommand: "gunicorn --bind 0.0.0.0:$PORT --worker-class gthread --workers 1 --threads 100 run:app"
     envVars:
       - key: FLASK_ENV
         value: production
