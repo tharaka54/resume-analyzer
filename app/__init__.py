@@ -35,7 +35,7 @@ def create_app(config_class=Config) -> Flask:
         "font-src":       ["'self'", "https://fonts.gstatic.com"],
         "img-src":        ["'self'", "data:", "https:"],   # allow profile pictures over HTTPS
         "connect-src":    ["'self'"],
-        "frame-ancestors":["'none'"],                      # blocks all iframe embedding
+        "frame-ancestors":["'self'", "https://huggingface.co"],  # Allows HF iframe embedding
         "object-src":     ["'none'"],
         "base-uri":       ["'self'"],
     }
@@ -50,7 +50,7 @@ def create_app(config_class=Config) -> Flask:
         content_security_policy=csp,
         x_content_type_options=True,                    # X-Content-Type-Options: nosniff
         x_xss_protection=True,                         # X-XSS-Protection: 1; mode=block
-        frame_options="DENY",                           # X-Frame-Options: DENY
+        frame_options=None,                             # Delegate to CSP frame-ancestors
         referrer_policy="strict-origin-when-cross-origin",
         session_cookie_secure=force_https,
         session_cookie_http_only=True,

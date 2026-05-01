@@ -1,3 +1,12 @@
+---
+title: Resume Analyzer
+emoji: 🚀
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+---
+
 # HireIQ — AI-Powered Resume Analyzer & Ranking System
 
 <br/>
