@@ -78,7 +78,9 @@ def callback():
     token_response = requests.post(GOOGLE_TOKEN_URL, data=token_data, timeout=10)
 
     if not token_response.ok:
-        return jsonify({"error": "Failed to exchange code for tokens"}), 400
+        error_details = token_response.text
+        current_app.logger.error(f"Google Token Exchange Failed: {error_details}")
+        return jsonify({"error": "Failed to exchange code for tokens", "details": token_response.json()}), 400
 
     token_json = token_response.json()
     google_access_token = token_json.get("access_token")
