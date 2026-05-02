@@ -35,6 +35,7 @@ FIELD_MAX_LENGTHS: dict[str, int] = {
     "name":            150,
     "email":           254,   # RFC 5321
     "status":           50,
+    "logo_url":       1000,
     "default":        1000,
 }
 
@@ -142,7 +143,7 @@ def sanitize_job_payload(data: dict) -> dict:
     guard_nosql(data)
 
     sanitized = {}
-    text_fields = ["title", "description", "company", "location", "job_type", "required_skills"]
+    text_fields = ["title", "description", "company", "location", "job_type", "required_skills", "logo_url"]
 
     for field in text_fields:
         if field in data:

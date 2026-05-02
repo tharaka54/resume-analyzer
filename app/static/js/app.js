@@ -201,6 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (jobsToRender && jobsToRender.length > 0) {
                     jobList.innerHTML = jobsToRender.map(job => `
                         <div class="job-card" onclick="window.history.pushState(null, '', '/job/${job._id}'); window.dispatchEvent(new Event('popstate'))">
+                            ${job.logo_url ? `<img src="${job.logo_url}" alt="${job.company} Logo" style="width: 90px; height: 90px; object-fit: cover; border-radius: 6px; float: right; margin-left: 15px;">` : ''}
                             <h3>${job.title}</h3>
                             <p class="company">${job.company || 'Unknown Company'}</p>
                             <div class="tags">
@@ -250,8 +251,13 @@ document.addEventListener("DOMContentLoaded", () => {
             mainContent.innerHTML = `
                 <div class="job-details">
                     <button class="back-btn" onclick="window.history.back()">← Back to Jobs</button>
-                    <h2>${job.title}</h2>
-                    <h3 class="company">${job.company}</h3>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                        <div>
+                            <h2>${job.title}</h2>
+                            <h3 class="company">${job.company}</h3>
+                        </div>
+                        ${job.logo_url ? `<img src="${job.logo_url}" alt="${job.company} Logo" style="width: 90px; height: 90px; object-fit: contain; border-radius: 12px; margin-left: 20px;">` : ''}
+                    </div>
                     <div class="tags" style="margin-bottom: 20px;">
                         <span class="tag">${job.location || 'Remote'}</span>
                         <span class="tag">${job.job_type || 'Full-Time'}</span>
@@ -283,6 +289,8 @@ document.addEventListener("DOMContentLoaded", () => {
             <form id="post-job-form" class="form-container">
                 <input type="text" id="j-title" placeholder="Job Title" required>
                 <input type="text" id="j-company" placeholder="Company Name" required>
+                <input type="file" id="j-logo" accept="image/png, image/jpeg, image/jpg" style="width:100%; padding:10px; margin-bottom:15px; border-radius:4px; border:1px solid #ccc;">
+                <small style="display:block; margin-top:-10px; margin-bottom:15px; color:#666;">Optional: Upload Company Logo (PNG/JPG)</small>
                 <input type="text" id="j-location" placeholder="Location e.g. London / Remote" required>
                 <select id="j-type" required style="width:100%; padding:10px; margin-bottom:15px; border-radius:4px; border:1px solid #ccc;">
                     <option value="" disabled selected>Select Job Type</option>
@@ -302,20 +310,24 @@ document.addEventListener("DOMContentLoaded", () => {
             btn.textContent = "Posting & Generating Quiz...";
             btn.disabled = true;
 
-            const payload = {
-                title: document.getElementById("j-title").value,
-                company: document.getElementById("j-company").value,
-                location: document.getElementById("j-location").value,
-                job_type: document.getElementById("j-type").value,
-                required_skills: document.getElementById("j-skills").value,
-                description: document.getElementById("j-desc").value
-            };
+            const formData = new FormData();
+            formData.append("title", document.getElementById("j-title").value);
+            formData.append("company", document.getElementById("j-company").value);
+            formData.append("location", document.getElementById("j-location").value);
+            formData.append("job_type", document.getElementById("j-type").value);
+            formData.append("required_skills", document.getElementById("j-skills").value);
+            formData.append("description", document.getElementById("j-desc").value);
+
+            const logoFile = document.getElementById("j-logo").files[0];
+            if (logoFile) {
+                formData.append("logo_file", logoFile);
+            }
 
             try {
                 const res = await fetch("/jobs/", {
                     method: "POST",
-                    headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
-                    body: JSON.stringify(payload)
+                    headers: { "Authorization": `Bearer ${token}` },
+                    body: formData
                 });
 
                 if (res.ok) {
@@ -348,6 +360,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 <form id="edit-job-form" class="form-container">
                     <input type="text" id="j-title" value="${job.title}" required>
                     <input type="text" id="j-company" value="${job.company}" required>
+                    <input type="file" id="j-logo" accept="image/png, image/jpeg, image/jpg" style="width:100%; padding:10px; margin-bottom:15px; border-radius:4px; border:1px solid #ccc;">
+                    <small style="display:block; margin-top:-10px; margin-bottom:15px; color:#666;">Optional: Upload New Company Logo (Leaves existing logo if empty)</small>
                     <input type="text" id="j-location" value="${job.location || ''}" required>
                     <select id="j-type" required style="width:100%; padding:10px; margin-bottom:15px; border-radius:4px; border:1px solid #ccc;">
                         <option value="Full-Time" ${job.job_type === 'Full-Time' ? 'selected' : ''}>Full-Time</option>
@@ -367,20 +381,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 btn.textContent = "Saving...";
                 btn.disabled = true;
 
-                const payload = {
-                    title: document.getElementById("j-title").value,
-                    company: document.getElementById("j-company").value,
-                    location: document.getElementById("j-location").value,
-                    job_type: document.getElementById("j-type").value,
-                    required_skills: document.getElementById("j-skills").value,
-                    description: document.getElementById("j-desc").value
-                };
+                const formData = new FormData();
+                formData.append("title", document.getElementById("j-title").value);
+                formData.append("company", document.getElementById("j-company").value);
+                formData.append("location", document.getElementById("j-location").value);
+                formData.append("job_type", document.getElementById("j-type").value);
+                formData.append("required_skills", document.getElementById("j-skills").value);
+                formData.append("description", document.getElementById("j-desc").value);
+
+                const logoFile = document.getElementById("j-logo").files[0];
+                if (logoFile) {
+                    formData.append("logo_file", logoFile);
+                }
 
                 try {
                     const res = await fetch(`/jobs/${jobId}`, {
                         method: "PUT",
-                        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
-                        body: JSON.stringify(payload)
+                        headers: { "Authorization": `Bearer ${token}` },
+                        body: formData
                     });
 
                     if (res.ok) {

@@ -5,6 +5,9 @@ All routes require JWT authentication.
 """
 
 from flask import Blueprint, request, jsonify, g
+from werkzeug.utils import secure_filename
+import os
+import uuid
 from app.middleware.auth_middleware import require_auth
 from app.models.job import create_job, get_jobs_by_user, get_job_by_id, update_job, delete_job, get_all_public_jobs, get_job_by_id_public
 from app.security.input_sanitizer import (
@@ -13,6 +16,12 @@ from app.security.input_sanitizer import (
 from app.extensions import limiter
 
 jobs_bp = Blueprint("jobs", __name__)
+
+LOGOS_DIR = os.path.join("app", "static", "img", "logos")
+os.makedirs(LOGOS_DIR, exist_ok=True)
+
+def allowed_logo_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'png', 'jpg', 'jpeg'}
 
 
 @jobs_bp.route("/public", methods=["GET"])
@@ -38,7 +47,8 @@ def create():
     POST /jobs/
     Create a new job posting.
     """
-    data = request.get_json() or {}
+    # If FormData was sent, use request.form. Otherwise fallback to JSON.
+    data = request.form.to_dict() if request.form else request.get_json() or {}
 
     # ── Sanitize + NoSQL injection guard ─────────────────────────────────
     try:
@@ -54,6 +64,17 @@ def create():
     location = data.get("location", "").strip()
     job_type = data.get("job_type", "").strip()
     required_skills = data.get("required_skills", "").strip()
+    logo_url = data.get("logo_url", "").strip()
+
+    # Handle logo file upload
+    if 'logo_file' in request.files:
+        file = request.files['logo_file']
+        if file and file.filename and allowed_logo_file(file.filename):
+            ext = file.filename.rsplit('.', 1)[1].lower()
+            filename = f"{uuid.uuid4().hex}.{ext}"
+            file_path = os.path.join(LOGOS_DIR, filename)
+            file.save(file_path)
+            logo_url = f"/static/img/logos/{filename}"
 
     if not title or not description:
         return jsonify({"error": "title and description are required"}), 400
@@ -61,7 +82,7 @@ def create():
     if len(description) < 50:
         return jsonify({"error": "Job description must be at least 50 characters"}), 400
 
-    job = create_job(user_id=g.user_id, title=title, description=description, company=company, location=location, job_type=job_type, required_skills=required_skills)
+    job = create_job(user_id=g.user_id, title=title, description=description, company=company, location=location, job_type=job_type, required_skills=required_skills, logo_url=logo_url)
     job_id = job["_id"]
 
     # Generate the Quiz pool in background
@@ -106,7 +127,7 @@ def update(job_id):
     PUT /jobs/<job_id>
     Update job attributes.
     """
-    data = request.get_json() or {}
+    data = request.form.to_dict() if request.form else request.get_json() or {}
 
     # ── Sanitize + NoSQL injection guard ─────────────────────────────────
     try:
@@ -118,9 +139,19 @@ def update(job_id):
 
     updates = {}
 
-    for field in ["title", "company", "location", "job_type", "required_skills"]:
+    for field in ["title", "company", "location", "job_type", "required_skills", "logo_url"]:
         if field in data:
             updates[field] = data[field].strip()
+            
+    # Handle optional logo file upload on edit
+    if 'logo_file' in request.files:
+        file = request.files['logo_file']
+        if file and file.filename and allowed_logo_file(file.filename):
+            ext = file.filename.rsplit('.', 1)[1].lower()
+            filename = f"{uuid.uuid4().hex}.{ext}"
+            file_path = os.path.join(LOGOS_DIR, filename)
+            file.save(file_path)
+            updates["logo_url"] = f"/static/img/logos/{filename}"
             
     if "description" in data:
         if len(data["description"].strip()) < 50:

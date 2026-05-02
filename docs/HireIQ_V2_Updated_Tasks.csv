@@ -1,0 +1,53 @@
+Task #,Task Name,Required Resources,Deadline,Responsible Person
+0.0,Project Coordination & Meetings,,,
+0.1,Meeting 1: Meeting with Asvin FERNANDO,MS Teams,08 Mar 2026,All Members
+0.2,Meeting 2: 16. SRI CSG3101.2 Project Planning,MS Teams,09 Mar 2026,All Members
+0.3,Meeting 3: Proposal Approval,MS Teams,15 Mar 2026,All Members
+0.4,Meeting 4: System Architecture Sync,MS Teams,19 Mar 2026,All Members
+0.5,Meeting 5: Development Kickoff / Sync,MS Teams,28 Mar 2026,All Members
+0.6,Meeting 6: Backend Progress Update,MS Teams,30 Mar 2026,All Members
+0.7,Meeting 7: UI & API Integration Sync,MS Teams,03 Apr 2026,All Members
+0.8,Meeting 8: Physical Campus Meeting (Feature Freeze),Campus,06 Apr 2026,All Members
+1.0,Project Initiation & Proposal (28 Feb - 16 Mar 2026),,,
+1.1,"Team formation, brainstorming & project idea finalisation","MS Teams, WhatsApp",28 Feb 2026,All Members
+1.2,"Define goals, gather FRs & NFRs, allocate team roles","MS Word, MS Teams",07 Mar 2026,All Members
+1.3,"Email supervisor, draft scope and feature list","MS Word, ECU Email",06 Mar 2026,"Tharaka, Asvin"
+1.4,"Set up communication channels and GitHub repository","MS Teams, GitHub, Whatsapp",06 Mar 2026,"Vishwaa, Asvin, Tharaka"
+2.0,Analysis (04 Mar - 16 Mar 2026),,,
+2.1,Supervisor meetings - draft proposal review & feedback,MS Teams,09 Mar 2026,All Members
+2.2,"Use case diagram, user stories and feasibility study","Draw.io, MS Word, Lucidchart",13 Mar 2026,"Asvin, Vinuka, Tharaka"
+2.3,"Research AI models, quiz anti-cheat and risk analysis","Research papers, Online",14 Mar 2026,"Asvin, Sehan"
+2.4,"Gantt chart creation, proposal writing and final review","MS Excel, MS Word",15 Mar 2026,All Members
+M1,Proposal Submission,PDF,16 Mar 2026,All Members
+3.0,System Design (15 Mar - 25 Mar 2026),,,
+3.1,"System architecture, data flow and MongoDB schema design","Draw.io, Lucidchart",20 Mar 2026,"Asvin, Sehan, Tharaka"
+3.2,REST API endpoint design and documentation,"Swagger, MS Word",23 Mar 2026,"Asvin, Sehan"
+3.3,"UI/UX wireframes - homepage, quiz, HR dashboard",Figma,25 Mar 2026,"Vinuka, Vishwaa"
+3.4,Security architecture and AI pipeline design,"MS Word, Draw.io",25 Mar 2026,"Sehan, Asvin"
+4.0,System Development (23 Mar - 16 Apr 2026),,,
+4.1,"Flask setup, MongoDB, Google OAuth 2.0 and JWT authentication","Flask, Python, MongoDB",01 Apr 2026,"Tharaka, Sehan"
+4.2,"Public HTML homepage, job posting CRUD and login redirect","HTML, CSS, JS, Flask",04 Apr 2026,"Vishwaa, Asvin, Vinuka"
+4.3,"AI quiz engine - Gemini generation, timer, scoring, retry logic","Gemini API, Flask, JS",07 Apr 2026,"Asvin, Tharaka"
+4.4,CV upload pipeline & basic security text extraction,"PyMuPDF, bleach, Flask",09 Apr 2026,"Sehan, Tharaka"
+4.5,"NLP ranking engine - TF-IDF, BERT, spaCy and Gemini explanation","scikit-learn, HuggingFace",11 Apr 2026,"Asvin, Vinuka"
+4.6,"HR dashboard, WebSocket live ranking, CV viewer and CSV export","HTML, JS, flask-sock",13 Apr 2026,"Vishwaa, Sehan"
+4.7,"Security Hardening: DDoS Rate Limiting, VirusTotal API & Random Forest ML","Flask-Limiter, Python",15 Apr 2026,"Tharaka, Sehan, Asvin"
+4.8,"O(1) AI Incremental Scoring Algorithm Pitch & Integration","Python, MongoDB",16 Apr 2026,"Tharaka, Asvin"
+5.0,Testing & QA (17 Apr - 04 May 2026),,,
+5.1,Unit and integration testing - Flask APIs and pipeline,"pytest, Postman",20 Apr 2026,"Vinuka, Tharaka"
+5.2,Frontend HTML/JS cross-browser testing,Browser DevTools,22 Apr 2026,Vishwaa
+5.3,"VAPT - OWASP ZAP security scan, quiz anti-cheat and PDF testing","OWASP ZAP, pytest",24 Apr 2026,"Sehan, Vinuka"
+5.4,"Performance testing, bug fixes and presentation preparation","pytest, PowerPoint",04 May 2026,All Members
+M2,Project Presentation,PowerPoint,04 May 2026,All Members
+6.0,Documentation & Delivery (01 May - 10 May 2026),,,
+6.1,User guide and developer / technical manual,MS Word,07 May 2026,"Vinuka, Vishwaa"
+6.2,VAPT report and system architecture documentation,MS Word,09 May 2026,Sehan
+6.3,Final report writing,MS Word,10 May 2026,All Members
+7.0,Evaluation (05 May - 11 May 2026),,,
+7.1,Evaluate system against all FRs and NFRs,"MS Word, System",09 May 2026,"Vinuka, Sehan"
+7.2,"Analyse AI scoring, quiz effectiveness and identify limitations","MS Word, Python",10 May 2026,"Asvin, Vinuka"
+7.3,Write evaluation section for final report,MS Word,11 May 2026,"Vinuka, Sehan"
+8.0,Project Closure (02 May - 11 May 2026),,,
+8.1,"Code cleanup, README, GitHub final commit - v1.0","VS Code, GitHub",11 May 2026,"Tharaka, Sehan"
+8.2,"Archive project files, team debrief and final submission",OneDrive,11 May 2026,All Members
+M3,Final Project Outputs,"GitHub, PDF",11 May 2026,All Members

@@ -15,7 +15,7 @@ def _serialize(job: dict) -> dict:
     return job
 
 
-def create_job(user_id: str, title: str, description: str, company: str = "", location: str = "", job_type: str = "", required_skills: str = "") -> dict:
+def create_job(user_id: str, title: str, description: str, company: str = "", location: str = "", job_type: str = "", required_skills: str = "", logo_url: str = "") -> dict:
     """Create a new job posting."""
     db = get_db()
     now = datetime.now(timezone.utc)
@@ -27,6 +27,7 @@ def create_job(user_id: str, title: str, description: str, company: str = "", lo
         "location": location,
         "job_type": job_type,
         "required_skills": required_skills,
+        "logo_url": logo_url,
         "created_at": now,
         "updated_at": now,
         "resume_count": 0,
