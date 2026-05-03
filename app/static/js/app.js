@@ -634,7 +634,8 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("ranking-progress").style.display = "block";
 
             // Start WS connection
-            const wsUrl = `ws://${window.location.host}/ws/ranking/${jobId}?token=${token}`;
+            const wsProtocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+            const wsUrl = `${wsProtocol}//${window.location.host}/ws/ranking/${jobId}?token=${token}`;
             const ws = new WebSocket(wsUrl);
 
             ws.onmessage = (event) => {
@@ -658,10 +659,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             };
 
-            // Trigger ranking manually so WS catches it
+            // Fallback: if WebSocket is blocked (e.g. HF proxy), still show results
+            ws.onerror = () => {
+                const status = document.getElementById("ws-status");
+                if (status) status.textContent = "Live progress unavailable — results will appear when scoring finishes.";
+            };
+            ws.onclose = () => {
+                setTimeout(() => loadResults(), 2000);
+            };
+
+            // Trigger ranking — POST runs scoring; also reload results on completion
             fetch(`/ranking/${jobId}`, {
                 method: "POST",
                 headers: { "Authorization": `Bearer ${token}` }
+            }).then(res => {
+                if (res.ok) loadResults();
             });
         });
     }
