@@ -17,7 +17,8 @@ from app.extensions import limiter
 
 jobs_bp = Blueprint("jobs", __name__)
 
-LOGOS_DIR = os.path.join("app", "static", "img", "logos")
+# Absolute path to logos dir — relative paths break when gunicorn CWD differs
+LOGOS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "static", "img", "logos")
 os.makedirs(LOGOS_DIR, exist_ok=True)
 
 def allowed_logo_file(filename):
